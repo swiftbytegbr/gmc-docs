@@ -1,12 +1,11 @@
 # Automations
 
-Automations are workflows you define and trigger (manually or via rules) to operate servers and nodes.
+Automations orchestrate sequences of operations on your infrastructure. Think of them as reusable workflows (e.g., nightly restarts, pre‑match scaling, scheduled backups). Automations are team‑scoped; you can create, edit and delete them, and then trigger runs manually or via external scheduling. Each run is tracked with rich status and timestamps.
+
+Automations are great for repeatability and safety. Instead of scripting against raw endpoints, you capture intent once and invoke it whenever needed.
 
 ## What you can do
-- List automations for your team
-- Create/edit/delete automations
-- Manually trigger an automation
-- List automation runs by team
+List automations, create/edit/delete them, trigger manual runs, and explore the history and status of runs across your team.
 
 ## Java
 ```java
@@ -39,4 +38,3 @@ run = client.automation_client.trigger_manual(created.id, {'targetIds': []})
 - Delete: `POST /automation/{automationId}/delete`
 - Trigger manual: `POST /automation/{automationId}/trigger-manual`
 - Runs: `GET /automation-run/by-team/{teamId}`
-

@@ -1,6 +1,6 @@
 # Settings
 
-Setting profiles let you fetch, update, parse, and generate configuration files (e.g., ini files).
+Setting profiles capture configuration for your servers in a structured way. Besides reading and updating profiles, the backend can also parse classic INI files into structured maps and generate INI text from structured data. This is useful when migrating existing setups or templating configs.
 
 ## Java
 ```java
@@ -30,4 +30,3 @@ ini = client.setting_profile_client.get_game_ini('prof-1')
 - `GET /setting/profile/{profileId}/game.ini`
 - `GET /setting/profile/{profileId}/gameUserSettings.ini`
 - `POST /setting/profile` (update)
-

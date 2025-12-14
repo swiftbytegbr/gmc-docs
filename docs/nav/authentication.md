@@ -1,6 +1,6 @@
 # Authentication
 
-GMC uses application-level credentials that are scoped to a team. You can authenticate in one of two ways:
+GMC uses application-level credentials that are scoped to a team. This means the permissions and data you can access are bounded by the team that owns the credentials. You can authenticate in one of two ways:
 
 - Application Token (single header)
 - Application Id + Application Secret (two headers)
@@ -41,4 +41,3 @@ curl -H "Accept: application/json" \
      -H "Application-Secret: $GMC_APP_SECRET" \
      https://api.gamemanager.cloud/team/my
 ```
-

@@ -1,6 +1,6 @@
 # Info & Version
 
-Check API and environment information.
+The Info endpoints expose meta information about the backend environment and its version. They are handy for health checks, compatibility checks (e.g., node↔backend versions), and diagnosing connectivity.
 
 ## Java
 ```java
@@ -22,4 +22,3 @@ print('API Version:', version.version)
 
 ## REST
 - `GET /info/version`
-

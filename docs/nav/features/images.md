@@ -1,6 +1,6 @@
 # Images & Files
 
-Work with image/content endpoints, typically returning raw bytes.
+Some resources in GMC are binary assets (icons, images, downloadable content). These endpoints return or accept raw bytes (for uploads) instead of JSON. SDKs provide convenience methods to download bytes; for uploads, use multipart/form‑data in REST or the helper methods in SDKs.
 
 ## Java
 ```java
@@ -23,4 +23,3 @@ with open('output.png', 'wb') as f:
 
 ## REST
 - `GET /images/{imageId}` (binary)
-

@@ -1,14 +1,11 @@
 # Servers
 
-Manage dedicated game servers running on nodes.
+Servers are the heart of GMC: a server represents a running game instance on a node. The backend stores metadata (game type, map, paths), tracks lifecycle, and coordinates long‑running actions (start/stop/restart/update/backup/rollback). Many operations enqueue tasks; status becomes visible via server status and related run/task endpoints.
+
+You can use these endpoints to provision servers, manage their configuration, run RCON commands, and keep them updated. When actions are not instantaneous (e.g., backups) the backend responds quickly and the node performs work asynchronously.
 
 ## What you can do
-- List and fetch servers
-- Start, stop, restart, update
-- RCON commands
-- Backups (create/delete) and reset settings
-- Create servers on a node
-- Change directory/display name
+List and fetch servers, start/stop/restart/update them, send RCON commands, create/restore backups, and change metadata like the server’s directory and display name.
 
 ## Java
 ```java
@@ -49,4 +46,3 @@ created = client.server_client.create_server('node-123', 'My Server', 'CS2', 'de
 - RCON: `POST /server/{serverId}/rcon` (JSON: `{\"command\":\"status\"}`)
 - Create: `POST /server/create` (JSON includes `nodeId`, `name`, `gameType`, `map`, `serverDirectory`)
 - Backups: `POST /server/{serverId}/backup`, `POST /server/{serverId}/delete-backup`
-

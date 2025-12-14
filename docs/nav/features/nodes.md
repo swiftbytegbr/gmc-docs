@@ -1,13 +1,11 @@
 # Nodes
 
-Nodes represent machines hosting game servers.
+Nodes represent your infrastructure: physical or virtual machines that host one or more game servers. GMC keeps track of each node’s identity, version, tasks and configurable settings. Most node operations are safe and read‑only, while a few (like update or settings changes) schedule work to be performed by the node agent.
+
+When you query nodes, the backend filters to the scope of your team. When you change settings or trigger an update, the backend validates the request and offloads execution to the node. Tasks provide transparency into what the node is currently doing and what has completed recently.
 
 ## What you can do
-- List nodes for your team
-- Get a specific node
-- Update a node
-- Change node settings
-- Inspect/cancel node tasks
+You can discover your nodes, retrieve a single node’s details, trigger a software update on a node, update its settings (e.g., paths or resource limits), and review/abort long‑running tasks when supported.
 
 ## Java
 ```java
@@ -33,8 +31,9 @@ client.node_client.update_node('node-123')
 ```
 
 ## REST
+The REST endpoints for nodes are straightforward and read‑friendly. Mutating actions like update and cancel are POSTs to clearly indicate intent.
+
 - List by team: `GET /node/by-team/{teamId}`
 - Get by id: `GET /node/{nodeId}`
 - Update: `POST /node/{nodeId}/update`
 - Tasks: `GET /node/{nodeId}/task` / `GET /node/{nodeId}/task/{taskId}` / `POST /node/{nodeId}/task/{taskId}/cancel`
-
