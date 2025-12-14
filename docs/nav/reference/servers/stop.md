@@ -4,7 +4,7 @@ Gracefully stop a running server.
 
 - Method: POST
 - Path (REST): `/server/{serverId}/stop`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Stops a running server. 409 if already stopping/stopped.
 
 === "Java"

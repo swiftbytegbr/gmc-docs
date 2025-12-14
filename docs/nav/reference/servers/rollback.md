@@ -5,7 +5,7 @@ Roll a server back to a backup. Optionally restore player-related data.
 - Method: POST
 - Path (REST): `/server/{serverId}/rollback`
 - Body: `{ "backupId": "<id>", "rollbackPlayers": true }`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Creates a task to restore from the selected backup; downtime expected while files are replaced.
 
 === "Java"

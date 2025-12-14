@@ -4,7 +4,7 @@ Restart a server (stop then start).
 
 - Method: POST
 - Path (REST): `/server/{serverId}/restart`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Performs a restart cycle (stop then start). 409 if busy.
 
 === "Java"

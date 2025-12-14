@@ -5,7 +5,7 @@ Invite a user to your team by email.
 - Method: POST
 - Path (REST): `/team/{teamId}/invite`
 - Body: `{ "userEmail": "dev@example.com" }`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Creates a pending invite for the email. May send notification.
 
 === "Java"

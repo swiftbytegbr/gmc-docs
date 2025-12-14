@@ -5,7 +5,7 @@ Upload or replace the team's icon using multipart/form-data.
 - Method: POST
 - Path (REST): `/team/{teamId}/icon`
 - Body: multipart field `file=@icon.png`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Replaces the current icon; image is stored and served from CDN or image endpoint.
 
 === "Java"

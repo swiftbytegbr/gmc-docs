@@ -4,7 +4,7 @@ Start a stopped server.
 
 - Method: POST
 - Path (REST): `/server/{serverId}/start`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Starts the server if stopped. 409 if already running or busy.
 
 === "Java"

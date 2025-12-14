@@ -4,7 +4,7 @@ Trigger a node self-update. Typically pulls and applies the latest node software
 
 - Method: POST
 - Path (REST): `/node/{nodeId}/update`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Enqueues an update task on the node. Idempotent; repeated calls re-trigger check.
 
 === "Java"

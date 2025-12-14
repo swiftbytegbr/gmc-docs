@@ -5,7 +5,7 @@ Update fields in a setting profile.
 - Method: POST
 - Path (REST): `/setting/profile`
 - Body: `SettingProfileUpdateRequest`
-- Returns: 204 No Content
+- Returns: 200 OK
 
 === "Java"
 

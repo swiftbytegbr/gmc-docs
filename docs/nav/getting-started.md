@@ -39,17 +39,15 @@ Until then, build from source in the sibling repos:
 === "Java (default)"
 
     ```java
-    import de.swiftbyte.gmc.sdk.GmcClient;
-    
-    GmcClient client = GmcClient.builder()
+    GmcClient gmc = GmcClient.builder()
         .baseUrl("https://api.gamemanager.cloud")
         .applicationId("<APP_ID>")
         .applicationSecret("<APP_SECRET>")
         // or: .applicationToken("<APP_TOKEN>")
         .build();
-    
+
     // Team ID is discovered automatically
-    de.swiftbyte.gmc.sdk.model.team.Team team = client.teamClient().getTeam();
+    Team team = gmc.teamClient().getTeam();
     System.out.println("Team: " + team.getName());
     ```
 

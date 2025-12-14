@@ -4,16 +4,14 @@ Java is the default example language. The Java SDK is thread-safe and exposes ty
 
 ## Setup
 ```java
-import de.swiftbyte.gmc.sdk.GmcClient;
-
-GmcClient client = GmcClient.builder()
+GmcClient gmc = GmcClient.builder()
     .baseUrl("https://api.gamemanager.cloud")
     .applicationId("<APP_ID>")
     .applicationSecret("<APP_SECRET>")
     // or: .applicationToken("<APP_TOKEN>")
     .build();
 
-String teamId = client.getTeamId(); // discovered automatically
+String teamId = gmc.getTeamId(); // discovered automatically
 ```
 
 ## Async vs Sync
@@ -22,10 +20,10 @@ String teamId = client.getTeamId(); // discovered automatically
 
 ```java
 // Sync
-java.util.List<GameServer> servers = client.serverClient().getGameServers().execute();
+java.util.List<GameServer> servers = gmc.serverClient().getGameServers().execute();
 
 // Async
-client.serverClient().getGameServers().queue(
+gmc.serverClient().getGameServers().queue(
   list -> System.out.println("Servers: " + list.size()),
   err -> err.printStackTrace()
 );
@@ -33,63 +31,63 @@ client.serverClient().getGameServers().queue(
 
 ## Nodes
 ```java
-java.util.List<Node> nodes = client.nodeClient().getNodes().execute();
-Node node = client.nodeClient().getNode("node-123").execute();
-client.nodeClient().updateNode("node-123").execute();
-client.nodeClient().changeSettings("node-123", new NodeSettings()).execute();
-java.util.List<NodeTask> tasks = client.nodeClient().getNodeTasks("node-123").execute();
+java.util.List<Node> nodes = gmc.nodeClient().getNodes().execute();
+Node node = gmc.nodeClient().getNode("node-123").execute();
+gmc.nodeClient().updateNode("node-123").execute();
+gmc.nodeClient().changeSettings("node-123", new NodeSettings()).execute();
+java.util.List<NodeTask> tasks = gmc.nodeClient().getNodeTasks("node-123").execute();
 ```
 
 ## Servers
 ```java
 // List and get
-java.util.List<GameServer> servers = client.serverClient().getGameServers().execute();
-GameServer srv = client.serverClient().getGameServer("srv-123").execute();
+java.util.List<GameServer> servers = gmc.serverClient().getGameServers().execute();
+GameServer srv = gmc.serverClient().getGameServer("srv-123").execute();
 
 // Lifecycle
-client.serverClient().startServer("srv-123").execute();
-client.serverClient().restartServer("srv-123").execute();
-client.serverClient().stopServer("srv-123").execute();
-client.serverClient().updateServer("srv-123").execute();
+gmc.serverClient().startServer("srv-123").execute();
+gmc.serverClient().restartServer("srv-123").execute();
+gmc.serverClient().stopServer("srv-123").execute();
+gmc.serverClient().updateServer("srv-123").execute();
 
 // Create
-GameServer created = client.serverClient()
+GameServer created = gmc.serverClient()
     .createServer("node-123", "My Server", GameType.CS2, "de_dust2", "/servers/cs2")
     .execute();
 
 // Backups and settings
-client.serverClient().backupServer("srv-123", "pre-update").execute();
-client.serverClient().deleteBackup("srv-123", "backup-1").execute();
-client.serverClient().resetSettings("srv-123").execute();
+gmc.serverClient().backupServer("srv-123", "pre-update").execute();
+gmc.serverClient().deleteBackup("srv-123", "backup-1").execute();
+gmc.serverClient().resetSettings("srv-123").execute();
 
 // Misc
-int maxPlayers = client.serverClient().getMaxPlayers("srv-123").execute();
-client.serverClient().rconCommand("srv-123", "status").execute();
-client.serverClient().changeDirectory("srv-123", "/servers/cs2").execute();
-client.serverClient().changeDisplayName("srv-123", "Public Server #1").execute();
+int maxPlayers = gmc.serverClient().getMaxPlayers("srv-123").execute();
+gmc.serverClient().rconCommand("srv-123", "status").execute();
+gmc.serverClient().changeDirectory("srv-123", "/servers/cs2").execute();
+gmc.serverClient().changeDisplayName("srv-123", "Public Server #1").execute();
 ```
 
 ## Teams
 ```java
-Team team = client.teamClient().getTeam();
-client.teamClient().inviteMember(team.getId(), "dev@example.com").execute();
-client.teamClient().kickMember(team.getId(), "user-123").execute();
-client.teamClient().setPermission(team.getId(), "user-123", java.util.List.of("ADMIN")).execute();
-client.teamClient().deleteTeam(team.getId()).execute();
-java.util.List<Notification> notifications = client.teamClient().getNotifications(true).execute();
-long unread = client.teamClient().getUnreadNotificationCount().execute();
+Team team = gmc.teamClient().getTeam();
+gmc.teamClient().inviteMember(team.getId(), "dev@example.com").execute();
+gmc.teamClient().kickMember(team.getId(), "user-123").execute();
+gmc.teamClient().setPermission(team.getId(), "user-123", java.util.List.of("ADMIN")).execute();
+gmc.teamClient().deleteTeam(team.getId()).execute();
+java.util.List<Notification> notifications = gmc.teamClient().getNotifications(true).execute();
+long unread = gmc.teamClient().getUnreadNotificationCount().execute();
 ```
 
 ## Automations
 ```java
-java.util.List<Automation> autList = client.automationClient().listAutomations().execute();
+java.util.List<Automation> autList = gmc.automationClient().listAutomations().execute();
 
 AutomationCreateRequest createReq = new AutomationCreateRequest();
-createReq.setTeamId(client.getTeamId());
+createReq.setTeamId(gmc.getTeamId());
 createReq.setName("Nightly Restart");
-Automation createdAutomation = client.automationClient().createAutomation(createReq).execute();
+Automation createdAutomation = gmc.automationClient().createAutomation(createReq).execute();
 
-AutomationRun run = client.automationClient()
+AutomationRun run = gmc.automationClient()
   .triggerManual(createdAutomation.getId(), new ManualTriggerRequest())
   .execute();
 ```
@@ -97,14 +95,14 @@ AutomationRun run = client.automationClient()
 ## Info & Images & Settings
 ```java
 // Version info
-GmcVersion version = client.infoClient().getVersion().execute();
+GmcVersion version = gmc.infoClient().getVersion().execute();
 
 // Image bytes
-byte[] bytes = client.imageClient().getImage("img-123").execute();
+byte[] bytes = gmc.imageClient().getImage("img-123").execute();
 
 // Setting profiles
-SettingProfile profile = client.settingProfileClient().getProfile("prof-1").execute();
-String gameIni = client.settingProfileClient().getGameIni("prof-1").execute();
+SettingProfile profile = gmc.settingProfileClient().getProfile("prof-1").execute();
+String gameIni = gmc.settingProfileClient().getGameIni("prof-1").execute();
 ```
 
 ## Errors
@@ -112,7 +110,7 @@ All API errors throw `GmcException` (or subclass). You can read status, key, and
 
 ```java
 try {
-  client.serverClient().startServer("srv-404").execute();
+  gmc.serverClient().startServer("srv-404").execute();
 } catch (GmcException e) {
   System.err.println(e.getMessage());
 }

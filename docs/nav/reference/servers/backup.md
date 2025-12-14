@@ -5,7 +5,7 @@ Create a named backup of a server.
 - Method: POST
 - Path (REST): `/server/{serverId}/backup`
 - Body: `{ "name": "<backup-name>" }`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Snapshot of files; may be async with a task; size and time depend on server contents.
 
 === "Java"

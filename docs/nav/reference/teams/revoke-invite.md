@@ -4,7 +4,7 @@ Revoke a pending team invite by user ID.
 
 - Method: DELETE
 - Path (REST): `/team/{teamId}/invite/{userId}`
-- Returns: 204 No Content
+- Returns: 200 OK
 
 === "Java"
 

@@ -4,7 +4,7 @@ Reset a server's settings to defaults.
 
 - Method: POST
 - Path (REST): `/server/{serverId}/reset-settings`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Rewrites config to defaults. Server restart may be required.
 
 === "Java"

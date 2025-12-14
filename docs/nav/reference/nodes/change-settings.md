@@ -5,7 +5,7 @@ Apply configuration changes to a node.
 - Method: POST
 - Path (REST): `/node/{nodeId}/settings`
 - Body: NodeSettings JSON
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Validates and persists settings, may restart services depending on fields.
 
 === "Java"

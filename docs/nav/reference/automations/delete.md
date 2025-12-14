@@ -4,7 +4,7 @@ Delete an automation by ID.
 
 - Method: POST
 - Path (REST): `/automation/{automationId}/delete`
-- Returns: 204 No Content
+- Returns: 200 OK
 
 === "Java"
 

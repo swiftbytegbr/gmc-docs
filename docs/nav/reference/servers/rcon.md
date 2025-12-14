@@ -5,7 +5,7 @@ Send an RCON command to a running server.
 - Method: POST
 - Path (REST): `/server/{serverId}/rcon`
 - Body: `{ "command": "status" }`
-- Returns: 204 No Content (output may be surfaced through logs/statistics)
+- Returns: 200 OK (output may be surfaced through logs/statistics)
 - Backend behavior: Requires RCON enabled and configured.
 
 === "Java"

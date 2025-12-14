@@ -4,7 +4,7 @@ Remove an application-user mapping by application ID.
 
 - Method: DELETE
 - Path (REST): `/team/{teamId}/application-user/{applicationId}`
-- Returns: 204 No Content
+- Returns: 200 OK
 
 === "Java"
 

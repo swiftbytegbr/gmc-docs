@@ -5,7 +5,7 @@ Remove a user from your team.
 - Method: POST
 - Path (REST): `/team/{teamId}/kick`
 - Body: `{ "memberId": "user-123" }`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Removes membership. Some permissions may be revoked immediately from running sessions.
 
 === "Java"

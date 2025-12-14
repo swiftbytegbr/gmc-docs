@@ -41,7 +41,7 @@ Example page payload:
 === "Java"
 
     ```java
-    de.swiftbyte.gmc.sdk.model.common.Page<AutomationRun> runs = client.automationRunClient()
+    Page<AutomationRun> runs = client.automationRunClient()
         .listRuns(0, 25, null, null, null, null)
         .execute();
     ```

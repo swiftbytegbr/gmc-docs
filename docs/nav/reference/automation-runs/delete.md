@@ -4,7 +4,7 @@ Delete a run record by ID.
 
 - Method: POST
 - Path (REST): `/automation-run/{runId}/delete`
-- Returns: 204 No Content
+- Returns: 200 OK
 
 === "Java"
 

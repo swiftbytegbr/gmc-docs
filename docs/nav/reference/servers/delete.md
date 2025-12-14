@@ -5,7 +5,7 @@ Permanently delete a server.
 - Method: POST
 - Path (REST): `/server/{serverId}/delete`
 - Body: `{ "forceDelete": false }`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: 409 if server is running; use `forceDelete: true` to override if supported by policy.
 
 === "Java"

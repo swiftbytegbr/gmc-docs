@@ -5,7 +5,7 @@ Copy ARK-related setting profiles (useful for migrating between servers or profi
 - Method: POST
 - Path (REST): `/setting/profile/copy`
 - Body: `CopyProfileRequest`
-- Returns: 204 No Content
+- Returns: 200 OK
 
 === "Java"
 

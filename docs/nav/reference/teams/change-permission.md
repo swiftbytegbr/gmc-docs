@@ -5,7 +5,7 @@ Set a member's permissions within the team.
 - Method: POST
 - Path (REST): `/team/{teamId}/permission`
 - Body: `{ "memberId": "user-123", "newPermissions": ["ADMIN"] }`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Effective immediately for future actions; running tasks may continue.
 
 === "Java"

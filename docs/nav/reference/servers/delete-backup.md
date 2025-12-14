@@ -5,7 +5,7 @@ Delete a specific backup by its ID.
 - Method: POST
 - Path (REST): `/server/{serverId}/delete-backup`
 - Body: `{ "backupId": "<id>" }`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Removes backup metadata and data.
 
 === "Java"

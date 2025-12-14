@@ -4,7 +4,7 @@ Permanently delete a node. Use with care.
 
 - Method: DELETE
 - Path (REST): `/node/{nodeId}`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: Deletes metadata; might require no active servers on the node. May return 409 if busy.
 
 === "Java"

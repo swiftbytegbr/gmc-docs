@@ -4,7 +4,7 @@ Cancel a cancellable task on a node.
 
 - Method: POST
 - Path (REST): `/node/{nodeId}/task/{taskId}/cancel`
-- Returns: 204 No Content
+- Returns: 200 OK
 - Backend behavior: If task is not cancellable or already finished, backend returns 400/409.
 
 === "Java"
