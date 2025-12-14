@@ -1,14 +1,7 @@
-{% extends "base.html" %}
-{% block footer %}
-  {{ super() }}
-  <div class="md-footer-meta__inner" style="padding: .5rem 0; font-size: .8em;">
-    <div class="md-footer-meta__links">
-      {% if config.extra.footer_links %}
-        {% for link in config.extra.footer_links %}
-          <a href="{{ link.href }}" target="_blank" rel="noopener">{{ link.text }}</a>
-          {% if not loop.last %} · {% endif %}
-        {% endfor %}
-      {% endif %}
-    </div>
-  </div>
-{% endblock %}
+<div class="md-copyright">
+  {% if config.extra.footer_links %}
+    {% for link in config.extra.footer_links %}
+      <a href="{{ link.href }}" target="_blank" rel="noopener">{{ link.text }}</a>{% if not loop.last %} · {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>

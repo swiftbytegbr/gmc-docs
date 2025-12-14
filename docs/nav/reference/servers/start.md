@@ -5,7 +5,7 @@ Start a stopped server.
 - Method: POST
 - Path (REST): `/server/{serverId}/start`
 - Returns: 204 No Content
-- Backend behavior: Enqueues a start task. 409 if already running or busy.
+- Backend behavior: Starts the server if stopped. 409 if already running or busy.
 
 === "Java"
 

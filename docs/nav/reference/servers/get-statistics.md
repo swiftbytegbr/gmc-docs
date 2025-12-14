@@ -10,7 +10,7 @@ Fetch live or cached server statistics. Note: Path includes nodeId per current A
 === "Java"
 
     ```java
-    var stats = client.serverClient().getStatistics("node-123", "srv-123").execute();
+    GameServerStatistic stats = client.serverClient().getStatistics("node-123", "srv-123").execute();
     ```
 
 === "JavaScript"

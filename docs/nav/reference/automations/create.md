@@ -42,10 +42,10 @@ Create a new automation.
 === "Java"
 
     ```java
-    var req = new AutomationCreateRequest();
+    AutomationCreateRequest req = new AutomationCreateRequest();
     req.setTeamId(client.getTeamId());
     req.setName("Nightly Restart");
-    var created = client.automationClient().createAutomation(req).execute();
+    Automation created = client.automationClient().createAutomation(req).execute();
     ```
 
 === "JavaScript"

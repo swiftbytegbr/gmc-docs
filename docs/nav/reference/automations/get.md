@@ -9,7 +9,7 @@ Fetch a single automation by ID.
 === "Java"
 
     ```java
-    var automation = client.automationClient().getAutomation("auto-1").execute();
+    Automation automation = client.automationClient().getAutomation("auto-1").execute();
     ```
 
 === "JavaScript"

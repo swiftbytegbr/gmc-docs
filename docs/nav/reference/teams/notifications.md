@@ -9,7 +9,7 @@ Fetch team notifications; optionally filter unread only.
 === "Java"
 
     ```java
-    var notifications = client.teamClient().getNotifications(true).execute();
+    java.util.List<Notification> notifications = client.teamClient().getNotifications(true).execute();
     ```
 
 === "JavaScript"

@@ -11,7 +11,7 @@ Apply configuration changes to a node.
 === "Java"
 
     ```java
-    var settings = new NodeSettings();
+    NodeSettings settings = new NodeSettings();
     // settings.set...;
     client.nodeClient().changeSettings("node-123", settings).execute();
     ```

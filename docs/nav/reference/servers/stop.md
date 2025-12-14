@@ -5,7 +5,7 @@ Gracefully stop a running server.
 - Method: POST
 - Path (REST): `/server/{serverId}/stop`
 - Returns: 204 No Content
-- Backend behavior: Enqueues a stop task. 409 if already stopping/stopped.
+- Backend behavior: Stops a running server. 409 if already stopping/stopped.
 
 === "Java"
 

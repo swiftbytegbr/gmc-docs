@@ -11,7 +11,7 @@ Trigger an automation manually.
 === "Java"
 
     ```java
-    var run = client.automationClient().triggerManual("auto-1", new ManualTriggerRequest()).execute();
+    AutomationRun run = client.automationClient().triggerManual("auto-1", new ManualTriggerRequest()).execute();
     ```
 
 === "JavaScript"

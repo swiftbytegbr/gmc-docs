@@ -26,7 +26,7 @@ Example:
 === "Java"
 
     ```java
-    var team = client.teamClient().getTeam(); // synchronous call
+    Team team = client.teamClient().getTeam(); // synchronous call
     String teamId = team.getId();
     ```
 

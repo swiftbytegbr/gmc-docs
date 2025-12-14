@@ -10,7 +10,7 @@ Update fields in a setting profile.
 === "Java"
 
     ```java
-    var update = new SettingProfileUpdateRequest();
+    SettingProfileUpdateRequest update = new SettingProfileUpdateRequest();
     update.setProfileId("prof-1");
     client.settingProfileClient().updateProfile(update).execute();
     ```

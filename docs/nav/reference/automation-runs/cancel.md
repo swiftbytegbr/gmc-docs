@@ -9,7 +9,7 @@ Cancel a run in progress, if supported by the underlying task.
 === "Java"
 
     ```java
-    var canceled = client.automationRunClient().cancelRun("run-1").execute();
+    AutomationRun canceled = client.automationRunClient().cancelRun("run-1").execute();
     ```
 
 === "JavaScript"

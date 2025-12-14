@@ -9,16 +9,16 @@ Fetch your team, manage members and permissions, upload team icons, review notif
 
 ## Java
 ```java
-var team = client.teamClient().getTeam();
+Team team = client.teamClient().getTeam();
 client.teamClient().inviteMember("dev@example.com").execute();
 client.teamClient().kickMember("user-123").execute();
 client.teamClient().changeMemberPermission("user-123", List.of(Permission.ADMIN)).execute();
 client.teamClient().changeTeamIcon(Files.readAllBytes(Path.of("icon.png")), "icon.png").execute();
-var page = client.teamClient().getActionLog(0, 25).execute();
-var users = client.teamClient().getApplicationUsers().execute();
+Page<ActionLogItem> page = client.teamClient().getActionLog(0, 25).execute();
+List<ApplicationUser> users = client.teamClient().getApplicationUsers().execute();
 client.teamClient().revokeInvite("user-123").execute();
 client.teamClient().deleteApplicationUser("app-123").execute();
-var notifications = client.teamClient().getNotifications(true).execute();
+List<Notification> notifications = client.teamClient().getNotifications(true).execute();
 long unread = client.teamClient().getUnreadNotificationCount().execute();
 ```
 

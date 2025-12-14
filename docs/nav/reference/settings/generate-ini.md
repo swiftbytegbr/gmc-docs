@@ -10,8 +10,8 @@ Generate an INI string from a structured map.
 === "Java"
 
     ```java
-    var map = new LinkedHashMap<String, LinkedHashMap<String, Object>>();
-    var ini = client.settingProfileClient().generateIni(map).execute();
+    java.util.LinkedHashMap<String, java.util.LinkedHashMap<String, Object>> map = new java.util.LinkedHashMap<>();
+    String ini = client.settingProfileClient().generateIni(map).execute();
     ```
 
 === "JavaScript"

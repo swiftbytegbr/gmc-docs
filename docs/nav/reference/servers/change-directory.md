@@ -6,7 +6,7 @@ Set a new directory path for the server's files.
 - Path (REST): `/server/{serverId}/change-directory`
 - Body: `{ "serverDirectory": "/servers/cs2" }`
 - Returns: 204 No Content
-- Backend behavior: Updates metadata; may require restart to take effect.
+- Backend behavior: Creates a task to apply directory changes on the node; progress is tracked as a task. A restart may be required to take effect.
 
 === "Java"
 

@@ -40,9 +40,9 @@ Returns a `GameServer` object. Example:
 === "Java"
 
     ```java
-    var created = client.serverClient()
-      .createServer("node-123", "My Server", GameType.CS2, "de_dust2", "/servers/cs2")
-      .execute();
+    GameServer created = client.serverClient()
+        .createServer("node-123", "My Server", GameType.CS2, "de_dust2", "/servers/cs2")
+        .execute();
     ```
 
 === "JavaScript"

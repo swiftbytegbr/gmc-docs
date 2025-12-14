@@ -35,7 +35,7 @@ Example:
 === "Java"
 
     ```java
-    var srv = client.serverClient().getGameServer("srv-123").execute();
+    GameServer srv = client.serverClient().getGameServer("srv-123").execute();
     ```
 
 === "JavaScript"

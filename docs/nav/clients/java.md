@@ -22,7 +22,7 @@ String teamId = client.getTeamId(); // discovered automatically
 
 ```java
 // Sync
-var servers = client.serverClient().getGameServers().execute();
+java.util.List<GameServer> servers = client.serverClient().getGameServers().execute();
 
 // Async
 client.serverClient().getGameServers().queue(
@@ -33,18 +33,18 @@ client.serverClient().getGameServers().queue(
 
 ## Nodes
 ```java
-var nodes = client.nodeClient().getNodes().execute();
-var node = client.nodeClient().getNode("node-123").execute();
+java.util.List<Node> nodes = client.nodeClient().getNodes().execute();
+Node node = client.nodeClient().getNode("node-123").execute();
 client.nodeClient().updateNode("node-123").execute();
 client.nodeClient().changeSettings("node-123", new NodeSettings()).execute();
-var tasks = client.nodeClient().getNodeTasks("node-123").execute();
+java.util.List<NodeTask> tasks = client.nodeClient().getNodeTasks("node-123").execute();
 ```
 
 ## Servers
 ```java
 // List and get
-var servers = client.serverClient().getGameServers().execute();
-var srv = client.serverClient().getGameServer("srv-123").execute();
+java.util.List<GameServer> servers = client.serverClient().getGameServers().execute();
+GameServer srv = client.serverClient().getGameServer("srv-123").execute();
 
 // Lifecycle
 client.serverClient().startServer("srv-123").execute();
@@ -53,7 +53,7 @@ client.serverClient().stopServer("srv-123").execute();
 client.serverClient().updateServer("srv-123").execute();
 
 // Create
-var created = client.serverClient()
+GameServer created = client.serverClient()
     .createServer("node-123", "My Server", GameType.CS2, "de_dust2", "/servers/cs2")
     .execute();
 
@@ -71,25 +71,25 @@ client.serverClient().changeDisplayName("srv-123", "Public Server #1").execute()
 
 ## Teams
 ```java
-var team = client.teamClient().getTeam();
+Team team = client.teamClient().getTeam();
 client.teamClient().inviteMember(team.getId(), "dev@example.com").execute();
 client.teamClient().kickMember(team.getId(), "user-123").execute();
-client.teamClient().setPermission(team.getId(), "user-123", List.of("ADMIN")).execute();
+client.teamClient().setPermission(team.getId(), "user-123", java.util.List.of("ADMIN")).execute();
 client.teamClient().deleteTeam(team.getId()).execute();
-var notifications = client.teamClient().getNotifications(team.getId(), true).execute();
-int unread = client.teamClient().getUnreadNotificationCount(team.getId()).execute();
+java.util.List<Notification> notifications = client.teamClient().getNotifications(true).execute();
+long unread = client.teamClient().getUnreadNotificationCount().execute();
 ```
 
 ## Automations
 ```java
-var autList = client.automationClient().listAutomations().execute();
+java.util.List<Automation> autList = client.automationClient().listAutomations().execute();
 
-var createReq = new AutomationCreateRequest();
+AutomationCreateRequest createReq = new AutomationCreateRequest();
 createReq.setTeamId(client.getTeamId());
 createReq.setName("Nightly Restart");
-var createdAutomation = client.automationClient().createAutomation(createReq).execute();
+Automation createdAutomation = client.automationClient().createAutomation(createReq).execute();
 
-var run = client.automationClient()
+AutomationRun run = client.automationClient()
   .triggerManual(createdAutomation.getId(), new ManualTriggerRequest())
   .execute();
 ```
@@ -97,13 +97,13 @@ var run = client.automationClient()
 ## Info & Images & Settings
 ```java
 // Version info
-var version = client.infoClient().getVersion().execute();
+GmcVersion version = client.infoClient().getVersion().execute();
 
 // Image bytes
 byte[] bytes = client.imageClient().getImage("img-123").execute();
 
 // Setting profiles
-var profile = client.settingProfileClient().getProfile("prof-1").execute();
+SettingProfile profile = client.settingProfileClient().getProfile("prof-1").execute();
 String gameIni = client.settingProfileClient().getGameIni("prof-1").execute();
 ```
 
@@ -117,4 +117,3 @@ try {
   System.err.println(e.getMessage());
 }
 ```
-

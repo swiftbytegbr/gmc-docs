@@ -10,7 +10,7 @@ Lists all nodes accessible to your team. The SDKs automatically resolve your `te
 === "Java"
 
     ```java
-    var nodes = client.nodeClient().getNodes().execute();
+    java.util.List<Node> nodes = client.nodeClient().getNodes().execute();
     ```
 
 === "JavaScript"

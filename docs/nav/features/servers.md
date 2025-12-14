@@ -1,6 +1,6 @@
 # Servers
 
-Servers are the heart of GMC: a server represents a running game instance on a node. The backend stores metadata (game type, map, paths), tracks lifecycle, and coordinates long‑running actions (start/stop/restart/update/backup/rollback). Many operations enqueue tasks; status becomes visible via server status and related run/task endpoints.
+Servers are the heart of GMC: a server represents a running game instance on a node. The backend stores metadata (game type, map, paths) and coordinates lifecycle operations (start/stop/restart/update) as well as configuration and data operations (backup/rollback/directory changes). Only backup, rollback, and directory change operations create a task entry; other actions execute directly and do not create server tasks.
 
 You can use these endpoints to provision servers, manage their configuration, run RCON commands, and keep them updated. When actions are not instantaneous (e.g., backups) the backend responds quickly and the node performs work asynchronously.
 
@@ -9,13 +9,13 @@ List and fetch servers, start/stop/restart/update them, send RCON commands, crea
 
 ## Java
 ```java
-var servers = client.serverClient().getGameServers().execute();
-var srv = client.serverClient().getGameServer("srv-123").execute();
+java.util.List<GameServer> servers = client.serverClient().getGameServers().execute();
+GameServer srv = client.serverClient().getGameServer("srv-123").execute();
 client.serverClient().startServer("srv-123").execute();
 client.serverClient().restartServer("srv-123").execute();
 client.serverClient().stopServer("srv-123").execute();
 client.serverClient().updateServer("srv-123").execute();
-var created = client.serverClient().createServer("node-123", "My Server", GameType.CS2, "de_dust2", "/servers/cs2").execute();
+GameServer created = client.serverClient().createServer("node-123", "My Server", GameType.CS2, "de_dust2", "/servers/cs2").execute();
 client.serverClient().backupServer("srv-123", "pre-update").execute();
 client.serverClient().deleteBackup("srv-123", "backup-1").execute();
 client.serverClient().resetSettings("srv-123").execute();

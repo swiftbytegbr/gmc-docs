@@ -6,7 +6,7 @@ Roll a server back to a backup. Optionally restore player-related data.
 - Path (REST): `/server/{serverId}/rollback`
 - Body: `{ "backupId": "<id>", "rollbackPlayers": true }`
 - Returns: 204 No Content
-- Backend behavior: Replaces server files from backup; downtime expected.
+- Backend behavior: Creates a task to restore from the selected backup; downtime expected while files are replaced.
 
 === "Java"
 

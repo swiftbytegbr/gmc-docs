@@ -41,7 +41,9 @@ Example page payload:
 === "Java"
 
     ```java
-    var runs = client.automationRunClient().listRuns(0, 25, null, null, null, null).execute();
+    de.swiftbyte.gmc.sdk.model.common.Page<AutomationRun> runs = client.automationRunClient()
+        .listRuns(0, 25, null, null, null, null)
+        .execute();
     ```
 
 === "JavaScript"

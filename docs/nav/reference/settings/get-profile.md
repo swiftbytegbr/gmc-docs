@@ -9,7 +9,7 @@ Fetch a setting profile by ID.
 === "Java"
 
     ```java
-    var profile = client.settingProfileClient().getProfile("prof-1").execute();
+    SettingProfile profile = client.settingProfileClient().getProfile("prof-1").execute();
     ```
 
 === "JavaScript"

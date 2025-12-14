@@ -9,12 +9,12 @@ List automations, create/edit/delete them, trigger manual runs, and explore the 
 
 ## Java
 ```java
-var list = client.automationClient().listAutomations().execute();
-var create = new AutomationCreateRequest();
+java.util.List<Automation> list = client.automationClient().listAutomations().execute();
+AutomationCreateRequest create = new AutomationCreateRequest();
 create.setTeamId(client.getTeamId());
 create.setName("Nightly Restart");
-var created = client.automationClient().createAutomation(create).execute();
-var run = client.automationClient().triggerManual(created.getId(), new ManualTriggerRequest()).execute();
+Automation created = client.automationClient().createAutomation(create).execute();
+AutomationRun run = client.automationClient().triggerManual(created.getId(), new ManualTriggerRequest()).execute();
 ```
 
 ## JavaScript

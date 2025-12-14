@@ -10,7 +10,7 @@ Fetch details of a single task on a node.
 === "Java"
 
     ```java
-    var task = client.nodeClient().getNodeTask("node-123", "task-1").execute();
+    NodeTask task = client.nodeClient().getNodeTask("node-123", "task-1").execute();
     ```
 
 === "JavaScript"

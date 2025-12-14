@@ -10,7 +10,7 @@ Copy ARK-related setting profiles (useful for migrating between servers or profi
 === "Java"
 
     ```java
-    var req = new CopyProfileRequest();
+    CopyProfileRequest req = new CopyProfileRequest();
     // req.setSource(...); req.setTargets(...);
     client.settingProfileClient().copyArkProfiles(req).execute();
     ```

@@ -49,7 +49,7 @@ Until then, build from source in the sibling repos:
         .build();
     
     // Team ID is discovered automatically
-    var team = client.teamClient().getTeam();
+    de.swiftbyte.gmc.sdk.model.team.Team team = client.teamClient().getTeam();
     System.out.println("Team: " + team.getName());
     ```
 

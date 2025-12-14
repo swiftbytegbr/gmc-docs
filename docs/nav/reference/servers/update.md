@@ -5,7 +5,7 @@ Trigger a game server update (e.g., pull latest game build/mods depending on bac
 - Method: POST
 - Path (REST): `/server/{serverId}/update`
 - Returns: 204 No Content
-- Backend behavior: Enqueues update; server may be stopped during update.
+- Backend behavior: Triggers an update; the server may be stopped during update.
 
 === "Java"
 

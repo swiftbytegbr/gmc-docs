@@ -10,7 +10,7 @@ Update an existing automation's settings.
 === "Java"
 
     ```java
-    var updated = client.automationClient().editAutomation("auto-1", new AutomationUpdateRequest()).execute();
+    Automation updated = client.automationClient().editAutomation("auto-1", new AutomationUpdateRequest()).execute();
     ```
 
 === "JavaScript"

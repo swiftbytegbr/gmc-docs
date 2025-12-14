@@ -9,7 +9,7 @@ List automations defined for your team.
 === "Java"
 
     ```java
-    var list = client.automationClient().listAutomations().execute();
+    java.util.List<Automation> list = client.automationClient().listAutomations().execute();
     ```
 
 === "JavaScript"

@@ -27,7 +27,7 @@ Example:
 === "Java"
 
     ```java
-    var node = client.nodeClient().getNode("node-123").execute();
+    Node node = client.nodeClient().getNode("node-123").execute();
     ```
 
 === "JavaScript"
