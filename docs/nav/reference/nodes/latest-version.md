@@ -8,21 +8,25 @@ Get the latest available node version string.
 - Backend behavior: Indicates the backend-supported node version. Useful to check update availability.
 
 === "Java"
-```java
-String version = client.nodeClient().getLatestVersion().execute();
-```
+
+    ```java
+    String version = client.nodeClient().getLatestVersion().execute();
+    ```
 
 === "JavaScript"
-```ts
-const version = await client.nodeClient.getLatestVersion();
-```
+
+    ```ts
+    const version = await client.nodeClient.getLatestVersion();
+    ```
 
 === "Python"
-```python
-version = client.node_client.get_latest_version()
-```
+
+    ```python
+    version = client.node_client.get_latest_version()
+    ```
 
 === "REST"
-```bash
-curl -s https://api.gamemanager.cloud/node/latest-version
-```
+
+    ```bash
+    curl -s https://api.gamemanager.cloud/node/latest-version
+    ```

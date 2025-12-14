@@ -8,22 +8,26 @@ Gracefully stop a running server.
 - Backend behavior: Enqueues a stop task. 409 if already stopping/stopped.
 
 === "Java"
-```java
-client.serverClient().stopServer("srv-123").execute();
-```
+
+    ```java
+    client.serverClient().stopServer("srv-123").execute();
+    ```
 
 === "JavaScript"
-```ts
-await client.serverClient.stopServer('srv-123');
-```
+
+    ```ts
+    await client.serverClient.stopServer('srv-123');
+    ```
 
 === "Python"
-```python
-client.server_client.stop_server('srv-123')
-```
+
+    ```python
+    client.server_client.stop_server('srv-123')
+    ```
 
 === "REST"
-```bash
-curl -X POST -H "Application-Token: $GMC_APP_TOKEN" \
-  https://api.gamemanager.cloud/server/srv-123/stop
-```
+
+    ```bash
+    curl -X POST -H "Application-Token: $GMC_APP_TOKEN" \
+      https://api.gamemanager.cloud/server/srv-123/stop
+    ```

@@ -8,22 +8,26 @@ Cancel a cancellable task on a node.
 - Backend behavior: If task is not cancellable or already finished, backend returns 400/409.
 
 === "Java"
-```java
-client.nodeClient().cancelNodeTask("node-123", "task-1").execute();
-```
+
+    ```java
+    client.nodeClient().cancelNodeTask("node-123", "task-1").execute();
+    ```
 
 === "JavaScript"
-```ts
-await client.nodeClient.cancelNodeTask('node-123', 'task-1');
-```
+
+    ```ts
+    await client.nodeClient.cancelNodeTask('node-123', 'task-1');
+    ```
 
 === "Python"
-```python
-client.node_client.cancel_node_task('node-123', 'task-1')
-```
+
+    ```python
+    client.node_client.cancel_node_task('node-123', 'task-1')
+    ```
 
 === "REST"
-```bash
-curl -X POST -H "Application-Token: $GMC_APP_TOKEN" \
-  https://api.gamemanager.cloud/node/node-123/task/task-1/cancel
-```
+
+    ```bash
+    curl -X POST -H "Application-Token: $GMC_APP_TOKEN" \
+      https://api.gamemanager.cloud/node/node-123/task/task-1/cancel
+    ```

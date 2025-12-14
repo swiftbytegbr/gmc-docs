@@ -24,26 +24,30 @@ Example:
 ```
 
 === "Java"
-```java
-var team = client.teamClient().getTeam(); // synchronous call
-String teamId = team.getId();
-```
+
+    ```java
+    var team = client.teamClient().getTeam(); // synchronous call
+    String teamId = team.getId();
+    ```
 
 === "JavaScript"
-```ts
-const team = await client.teamClient.getTeam();
-const teamId = team.id;
-```
+
+    ```ts
+    const team = await client.teamClient.getTeam();
+    const teamId = team.id;
+    ```
 
 === "Python"
-```python
-team = client.team_client.get_team()
-team_id = team.id
-```
+
+    ```python
+    team = client.team_client.get_team()
+    team_id = team.id
+    ```
 
 === "REST"
-```bash
-curl -s -H "Accept: application/json" \
-  -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
-  https://api.gamemanager.cloud/team/my
-```
+
+    ```bash
+    curl -s -H "Accept: application/json" \
+      -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
+      https://api.gamemanager.cloud/team/my
+    ```

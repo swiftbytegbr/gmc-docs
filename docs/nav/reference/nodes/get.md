@@ -25,24 +25,28 @@ Example:
 ```
 
 === "Java"
-```java
-var node = client.nodeClient().getNode("node-123").execute();
-```
+
+    ```java
+    var node = client.nodeClient().getNode("node-123").execute();
+    ```
 
 === "JavaScript"
-```ts
-const node = await client.nodeClient.getNode('node-123');
-```
+
+    ```ts
+    const node = await client.nodeClient.getNode('node-123');
+    ```
 
 === "Python"
-```python
-node = client.node_client.get_node('node-123')
-```
+
+    ```python
+    node = client.node_client.get_node('node-123')
+    ```
 
 === "REST"
-```bash
-curl -s \
-  -H "Accept: application/json" \
-  -H "Application-Token: $GMC_APP_TOKEN" \
-  https://api.gamemanager.cloud/node/node-123
-```
+
+    ```bash
+    curl -s \
+      -H "Accept: application/json" \
+      -H "Application-Token: $GMC_APP_TOKEN" \
+      https://api.gamemanager.cloud/node/node-123
+    ```

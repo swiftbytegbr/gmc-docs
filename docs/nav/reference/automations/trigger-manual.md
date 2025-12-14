@@ -9,24 +9,28 @@ Trigger an automation manually.
 - Backend behavior: Enqueues a run; inspect via Automation Runs endpoints.
 
 === "Java"
-```java
-var run = client.automationClient().triggerManual("auto-1", new ManualTriggerRequest()).execute();
-```
+
+    ```java
+    var run = client.automationClient().triggerManual("auto-1", new ManualTriggerRequest()).execute();
+    ```
 
 === "JavaScript"
-```ts
-const run = await client.automationClient.triggerManual('auto-1', { targetIds: [] });
-```
+
+    ```ts
+    const run = await client.automationClient.triggerManual('auto-1', { targetIds: [] });
+    ```
 
 === "Python"
-```python
-run = client.automation_client.trigger_manual('auto-1', { 'targetIds': [] })
-```
+
+    ```python
+    run = client.automation_client.trigger_manual('auto-1', { 'targetIds': [] })
+    ```
 
 === "REST"
-```bash
-curl -X POST -H "Content-Type: application/json" \
-  -H "Application-Token: $GMC_APP_TOKEN" \
-  -d '{"targetIds":[]}' \
-  https://api.gamemanager.cloud/automation/auto-1/trigger-manual
-```
+
+    ```bash
+    curl -X POST -H "Content-Type: application/json" \
+      -H "Application-Token: $GMC_APP_TOKEN" \
+      -d '{"targetIds":[]}' \
+      https://api.gamemanager.cloud/automation/auto-1/trigger-manual
+    ```

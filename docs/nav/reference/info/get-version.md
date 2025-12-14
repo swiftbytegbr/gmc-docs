@@ -7,21 +7,25 @@ Return backend version information.
 - Returns: GmcVersion
 
 === "Java"
-```java
-var version = client.infoClient().getVersion().execute();
-```
+
+    ```java
+    var version = client.infoClient().getVersion().execute();
+    ```
 
 === "JavaScript"
-```ts
-const version = await client.infoClient.getVersion();
-```
+
+    ```ts
+    const version = await client.infoClient.getVersion();
+    ```
 
 === "Python"
-```python
-version = client.info_client.get_version()
-```
+
+    ```python
+    version = client.info_client.get_version()
+    ```
 
 === "REST"
-```bash
-curl -s https://api.gamemanager.cloud/info/version
-```
+
+    ```bash
+    curl -s https://api.gamemanager.cloud/info/version
+    ```

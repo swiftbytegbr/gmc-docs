@@ -38,26 +38,30 @@ Returns a `GameServer` object. Example:
 ```
 
 === "Java"
-```java
-var created = client.serverClient()
-  .createServer("node-123", "My Server", GameType.CS2, "de_dust2", "/servers/cs2")
-  .execute();
-```
+
+    ```java
+    var created = client.serverClient()
+      .createServer("node-123", "My Server", GameType.CS2, "de_dust2", "/servers/cs2")
+      .execute();
+    ```
 
 === "JavaScript"
-```ts
-const srv = await client.serverClient.createServer('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2');
-```
+
+    ```ts
+    const srv = await client.serverClient.createServer('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2');
+    ```
 
 === "Python"
-```python
-srv = client.server_client.create_server('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2')
-```
+
+    ```python
+    srv = client.server_client.create_server('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2')
+    ```
 
 === "REST"
-```bash
-curl -X POST -H "Content-Type: application/json" \
-  -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
-  -d '{"nodeId":"node-123","name":"My Server","gameType":"CS2","map":"de_dust2","serverDirectory":"/servers/cs2"}' \
-  https://api.gamemanager.cloud/server/create
-```
+
+    ```bash
+    curl -X POST -H "Content-Type: application/json" \
+      -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
+      -d '{"nodeId":"node-123","name":"My Server","gameType":"CS2","map":"de_dust2","serverDirectory":"/servers/cs2"}' \
+      https://api.gamemanager.cloud/server/create
+    ```

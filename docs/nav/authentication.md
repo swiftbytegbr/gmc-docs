@@ -10,15 +10,17 @@ Where to get keys: `app.gamemanager.cloud` → Team Settings → Applications. K
 ## REST Headers
 
 === "Application Token"
-```http
-Application-Token: gmc-app-token-xxxxxxxx
-```
+
+    ```http
+    Application-Token: gmc-app-token-xxxxxxxx
+    ```
 
 === "Id + Secret"
-```http
-Application-Id: <APP_ID>
-Application-Secret: <APP_SECRET>
-```
+
+    ```http
+    Application-Id: <APP_ID>
+    Application-Secret: <APP_SECRET>
+    ```
 
 Always send `Accept: application/json`. POST/PUT should send `Content-Type: application/json` unless using multipart.
 
@@ -35,9 +37,10 @@ Always send `Accept: application/json`. POST/PUT should send `Content-Type: appl
 
 ## Example
 === "curl"
-```bash
-curl -H "Accept: application/json" \
-     -H "Application-Id: $GMC_APP_ID" \
-     -H "Application-Secret: $GMC_APP_SECRET" \
-     https://api.gamemanager.cloud/team/my
-```
+
+    ```bash
+    curl -H "Accept: application/json" \
+         -H "Application-Id: $GMC_APP_ID" \
+         -H "Application-Secret: $GMC_APP_SECRET" \
+         https://api.gamemanager.cloud/team/my
+    ```

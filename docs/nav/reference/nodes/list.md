@@ -8,25 +8,29 @@ Lists all nodes accessible to your team. The SDKs automatically resolve your `te
 - Backend behavior: returns only nodes belonging to the team from your credentials. No side effects. Cache-friendly.
 
 === "Java"
-```java
-var nodes = client.nodeClient().getNodes().execute();
-```
+
+    ```java
+    var nodes = client.nodeClient().getNodes().execute();
+    ```
 
 === "JavaScript"
-```ts
-const nodes = await client.nodeClient.getNodes();
-```
+
+    ```ts
+    const nodes = await client.nodeClient.getNodes();
+    ```
 
 === "Python"
-```python
-nodes = client.node_client.get_nodes()
-```
+
+    ```python
+    nodes = client.node_client.get_nodes()
+    ```
 
 === "REST"
-```bash
-curl -s \
-  -H "Accept: application/json" \
-  -H "Application-Id: $GMC_APP_ID" \
-  -H "Application-Secret: $GMC_APP_SECRET" \
-  https://api.gamemanager.cloud/node/by-team/$TEAM_ID
-```
+
+    ```bash
+    curl -s \
+      -H "Accept: application/json" \
+      -H "Application-Id: $GMC_APP_ID" \
+      -H "Application-Secret: $GMC_APP_SECRET" \
+      https://api.gamemanager.cloud/node/by-team/$TEAM_ID
+    ```

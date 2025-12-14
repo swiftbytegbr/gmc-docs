@@ -7,22 +7,26 @@ Fetch team notifications; optionally filter unread only.
 - Returns: Array of Notification
 
 === "Java"
-```java
-var notifications = client.teamClient().getNotifications(true).execute();
-```
+
+    ```java
+    var notifications = client.teamClient().getNotifications(true).execute();
+    ```
 
 === "JavaScript"
-```ts
-const notifications = await client.teamClient.getNotifications(true);
-```
+
+    ```ts
+    const notifications = await client.teamClient.getNotifications(true);
+    ```
 
 === "Python"
-```python
-notifications = client.team_client.get_notifications(only_unread=True)
-```
+
+    ```python
+    notifications = client.team_client.get_notifications(only_unread=True)
+    ```
 
 === "REST"
-```bash
-curl -s -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
-  "https://api.gamemanager.cloud/team/$TEAM_ID/notifications?onlyUnread=true"
-```
+
+    ```bash
+    curl -s -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
+      "https://api.gamemanager.cloud/team/$TEAM_ID/notifications?onlyUnread=true"
+    ```

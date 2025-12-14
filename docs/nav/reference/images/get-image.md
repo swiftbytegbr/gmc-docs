@@ -7,21 +7,25 @@ Fetch raw bytes of an image asset by ID.
 - Returns: image bytes (binary)
 
 === "Java"
-```java
-byte[] bytes = client.imageClient().getImage("img-123").execute();
-```
+
+    ```java
+    byte[] bytes = client.imageClient().getImage("img-123").execute();
+    ```
 
 === "JavaScript"
-```ts
-const bytes = await client.imageClient.getImage('img-123'); // Buffer
-```
+
+    ```ts
+    const bytes = await client.imageClient.getImage('img-123'); // Buffer
+    ```
 
 === "Python"
-```python
-img = client.image_client.get_image('img-123')
-```
+
+    ```python
+    img = client.image_client.get_image('img-123')
+    ```
 
 === "REST"
-```bash
-curl -s -o out.png https://api.gamemanager.cloud/images/img-123
-```
+
+    ```bash
+    curl -s -o out.png https://api.gamemanager.cloud/images/img-123
+    ```

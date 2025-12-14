@@ -7,22 +7,26 @@ List automations defined for your team.
 - Returns: Array of Automation
 
 === "Java"
-```java
-var list = client.automationClient().listAutomations().execute();
-```
+
+    ```java
+    var list = client.automationClient().listAutomations().execute();
+    ```
 
 === "JavaScript"
-```ts
-const list = await client.automationClient.listAutomations();
-```
+
+    ```ts
+    const list = await client.automationClient.listAutomations();
+    ```
 
 === "Python"
-```python
-automations = client.automation_client.list_automations()
-```
+
+    ```python
+    automations = client.automation_client.list_automations()
+    ```
 
 === "REST"
-```bash
-curl -s -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
-  https://api.gamemanager.cloud/automation/by-team/$TEAM_ID
-```
+
+    ```bash
+    curl -s -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
+      https://api.gamemanager.cloud/automation/by-team/$TEAM_ID
+    ```

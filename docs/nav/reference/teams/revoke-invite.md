@@ -7,22 +7,26 @@ Revoke a pending team invite by user ID.
 - Returns: 204 No Content
 
 === "Java"
-```java
-client.teamClient().revokeInvite("user-123").execute();
-```
+
+    ```java
+    client.teamClient().revokeInvite("user-123").execute();
+    ```
 
 === "JavaScript"
-```ts
-await client.teamClient.revokeInvite('user-123');
-```
+
+    ```ts
+    await client.teamClient.revokeInvite('user-123');
+    ```
 
 === "Python"
-```python
-client.team_client.revoke_invite('user-123')
-```
+
+    ```python
+    client.team_client.revoke_invite('user-123')
+    ```
 
 === "REST"
-```bash
-curl -X DELETE -H "Application-Token: $GMC_APP_TOKEN" \
-  https://api.gamemanager.cloud/team/$TEAM_ID/invite/user-123
-```
+
+    ```bash
+    curl -X DELETE -H "Application-Token: $GMC_APP_TOKEN" \
+      https://api.gamemanager.cloud/team/$TEAM_ID/invite/user-123
+    ```

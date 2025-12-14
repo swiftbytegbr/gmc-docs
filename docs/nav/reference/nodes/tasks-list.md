@@ -8,22 +8,26 @@ List tasks scheduled or in-progress on a node.
 - Backend behavior: Includes running and history (depending on retention). Safe and read-only.
 
 === "Java"
-```java
-var tasks = client.nodeClient().getNodeTasks("node-123").execute();
-```
+
+    ```java
+    var tasks = client.nodeClient().getNodeTasks("node-123").execute();
+    ```
 
 === "JavaScript"
-```ts
-const tasks = await client.nodeClient.getNodeTasks('node-123');
-```
+
+    ```ts
+    const tasks = await client.nodeClient.getNodeTasks('node-123');
+    ```
 
 === "Python"
-```python
-tasks = client.node_client.get_node_tasks('node-123')
-```
+
+    ```python
+    tasks = client.node_client.get_node_tasks('node-123')
+    ```
 
 === "REST"
-```bash
-curl -s -H "Application-Token: $GMC_APP_TOKEN" \
-  https://api.gamemanager.cloud/node/node-123/task
-```
+
+    ```bash
+    curl -s -H "Application-Token: $GMC_APP_TOKEN" \
+      https://api.gamemanager.cloud/node/node-123/task
+    ```

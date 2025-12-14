@@ -8,22 +8,26 @@ List all servers for your team.
 - Backend behavior: Team-scoped; read-only.
 
 === "Java"
-```java
-var servers = client.serverClient().getGameServers().execute();
-```
+
+    ```java
+    var servers = client.serverClient().getGameServers().execute();
+    ```
 
 === "JavaScript"
-```ts
-const servers = await client.serverClient.getGameServers();
-```
+
+    ```ts
+    const servers = await client.serverClient.getGameServers();
+    ```
 
 === "Python"
-```python
-servers = client.server_client.get_game_servers()
-```
+
+    ```python
+    servers = client.server_client.get_game_servers()
+    ```
 
 === "REST"
-```bash
-curl -s -H "Application-Token: $GMC_APP_TOKEN" \
-  https://api.gamemanager.cloud/server/by-team/$TEAM_ID
-```
+
+    ```bash
+    curl -s -H "Application-Token: $GMC_APP_TOKEN" \
+      https://api.gamemanager.cloud/server/by-team/$TEAM_ID
+    ```

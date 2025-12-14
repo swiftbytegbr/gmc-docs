@@ -8,22 +8,26 @@ Fetch details of a single task on a node.
 - Backend behavior: Read-only.
 
 === "Java"
-```java
-var task = client.nodeClient().getNodeTask("node-123", "task-1").execute();
-```
+
+    ```java
+    var task = client.nodeClient().getNodeTask("node-123", "task-1").execute();
+    ```
 
 === "JavaScript"
-```ts
-const task = await client.nodeClient.getNodeTask('node-123', 'task-1');
-```
+
+    ```ts
+    const task = await client.nodeClient.getNodeTask('node-123', 'task-1');
+    ```
 
 === "Python"
-```python
-task = client.node_client.get_node_task('node-123', 'task-1')
-```
+
+    ```python
+    task = client.node_client.get_node_task('node-123', 'task-1')
+    ```
 
 === "REST"
-```bash
-curl -s -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
-  https://api.gamemanager.cloud/node/node-123/task/task-1
-```
+
+    ```bash
+    curl -s -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
+      https://api.gamemanager.cloud/node/node-123/task/task-1
+    ```
