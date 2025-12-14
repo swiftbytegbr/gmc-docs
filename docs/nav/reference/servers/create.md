@@ -40,7 +40,7 @@ Returns a `GameServer` object. Example:
 === "Java"
 
     ```java
-    GameServer created = client.serverClient()
+    GameServer created = gmc.serverClient()
         .createServer("node-123", "My Server", GameType.CS2, "de_dust2", "/servers/cs2")
         .execute();
     ```

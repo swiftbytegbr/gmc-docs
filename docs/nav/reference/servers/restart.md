@@ -10,7 +10,7 @@ Restart a server (stop then start).
 === "Java"
 
     ```java
-    client.serverClient().restartServer("srv-123").execute();
+    gmc.serverClient().restartServer("srv-123").execute();
     ```
 
 === "JavaScript"

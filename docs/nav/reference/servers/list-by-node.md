@@ -10,7 +10,7 @@ List all servers hosted on a specific node.
 === "Java"
 
     ```java
-    java.util.List<GameServer> servers = client.serverClient().getGameServersByNode("node-123").execute();
+    java.util.List<GameServer> servers = gmc.serverClient().getGameServersByNode("node-123").execute();
     ```
 
 === "JavaScript"

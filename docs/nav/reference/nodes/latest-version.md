@@ -10,7 +10,7 @@ Get the latest available node version string.
 === "Java"
 
     ```java
-    String version = client.nodeClient().getLatestVersion().execute();
+    String version = gmc.nodeClient().getLatestVersion().execute();
     ```
 
 === "JavaScript"

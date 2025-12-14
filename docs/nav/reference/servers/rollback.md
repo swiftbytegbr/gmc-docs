@@ -11,7 +11,7 @@ Roll a server back to a backup. Optionally restore player-related data.
 === "Java"
 
     ```java
-    client.serverClient().rollbackServer("srv-123", "backup-1", true).execute();
+    gmc.serverClient().rollbackServer("srv-123", "backup-1", true).execute();
     ```
 
 === "JavaScript"

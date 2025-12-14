@@ -1,4 +1,4 @@
-site_name: GMC APIDocumentation
+site_name: GMC API Documentation
 site_description: Official documentation for Game Manager Cloud (GMC) REST API and client SDKs (Java, JavaScript, Python)
 copyright: Copyright © 2025 Swiftbyte / GMC
 
@@ -12,6 +12,25 @@ nav:
           - JavaScript: nav/clients/javascript.md
           - Python: nav/clients/python.md
           - REST API: nav/rest.md
+      - Info & Version: nav/features/info.md
+      - Data Models:
+          - Node: nav/models/node.md
+          - Game Server: nav/models/game-server.md
+          - Game Server Statistic: nav/models/game-server-statistic.md
+          - Team: nav/models/team.md
+          - Permissions: nav/models/permissions.md
+          - Automation: nav/models/automation.md
+          - Automation Run: nav/models/automation-run.md
+          - Setting Profile: nav/models/setting-profile.md
+          - Page<T>: nav/models/page.md
+          - Version Info: nav/models/version.md
+      - Guides:
+          - Concepts & Architecture: nav/guides/concepts.md
+          - Pagination & Filtering: nav/guides/pagination.md
+          - Rate Limiting & Retries: nav/guides/rate-limits.md
+          - Security & Compliance: nav/guides/security.md
+          - Async & Concurrency: nav/guides/async.md
+          - Errors & Troubleshooting: nav/guides/errors.md
   - Features:
       - Nodes: nav/features/nodes.md
       - Servers: nav/features/servers.md
@@ -19,7 +38,6 @@ nav:
       - Teams: nav/features/teams.md
       - Images & Files: nav/features/images.md
       - Settings: nav/features/settings.md
-      - Info & Version: nav/features/info.md
   - Nodes:
       - List Nodes (by team): nav/reference/nodes/list.md
       - Get Node: nav/reference/nodes/get.md
@@ -83,26 +101,6 @@ nav:
       - Copy ARK Profiles: nav/reference/settings/copy-ark-profiles.md
   - Images:
       - Get Image: nav/reference/images/get-image.md
-  - Home (More):
-      - Info & Version: nav/features/info.md
-      - Data Models:
-          - Node: nav/models/node.md
-          - Game Server: nav/models/game-server.md
-          - Game Server Statistic: nav/models/game-server-statistic.md
-          - Team: nav/models/team.md
-          - Permissions: nav/models/permissions.md
-          - Automation: nav/models/automation.md
-          - Automation Run: nav/models/automation-run.md
-          - Setting Profile: nav/models/setting-profile.md
-          - Page<T>: nav/models/page.md
-          - Version Info: nav/models/version.md
-      - Guides:
-          - Concepts & Architecture: nav/guides/concepts.md
-          - Pagination & Filtering: nav/guides/pagination.md
-          - Rate Limiting & Retries: nav/guides/rate-limits.md
-          - Security & Compliance: nav/guides/security.md
-          - Async & Concurrency: nav/guides/async.md
-          - Errors & Troubleshooting: nav/guides/errors.md
 
 theme:
   name: material

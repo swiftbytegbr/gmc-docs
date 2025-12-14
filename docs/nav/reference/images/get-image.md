@@ -9,7 +9,7 @@ Fetch raw bytes of an image asset by ID.
 === "Java"
 
     ```java
-    byte[] bytes = client.imageClient().getImage("img-123").execute();
+    byte[] bytes = gmc.imageClient().getImage("img-123").execute();
     ```
 
 === "JavaScript"

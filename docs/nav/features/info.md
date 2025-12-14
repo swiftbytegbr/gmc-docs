@@ -4,7 +4,7 @@ The Info endpoints expose meta information about the backend environment and its
 
 ## Java
 ```java
-GmcVersion version = client.infoClient().getVersion().execute();
+GmcVersion version = gmc.infoClient().getVersion().execute();
 System.out.println("API Version: " + version.getVersion());
 ```
 

@@ -10,7 +10,7 @@ Reset a server's settings to defaults.
 === "Java"
 
     ```java
-    client.serverClient().resetSettings("srv-123").execute();
+    gmc.serverClient().resetSettings("srv-123").execute();
     ```
 
 === "JavaScript"

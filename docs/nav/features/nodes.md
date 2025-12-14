@@ -9,11 +9,11 @@ You can discover your nodes, retrieve a single node’s details, trigger a softw
 
 ## Java
 ```java
-java.util.List<Node> nodes = client.nodeClient().getNodes().execute();
-Node node = client.nodeClient().getNode("node-123").execute();
-client.nodeClient().updateNode("node-123").execute();
-client.nodeClient().changeSettings("node-123", new NodeSettings()).execute();
-java.util.List<NodeTask> tasks = client.nodeClient().getNodeTasks("node-123").execute();
+java.util.List<Node> nodes = gmc.nodeClient().getNodes().execute();
+Node node = gmc.nodeClient().getNode("node-123").execute();
+gmc.nodeClient().updateNode("node-123").execute();
+gmc.nodeClient().changeSettings("node-123", new NodeSettings()).execute();
+java.util.List<NodeTask> tasks = gmc.nodeClient().getNodeTasks("node-123").execute();
 ```
 
 ## JavaScript

@@ -11,7 +11,7 @@ Create a named backup of a server.
 === "Java"
 
     ```java
-    client.serverClient().backupServer("srv-123", "pre-update").execute();
+    gmc.serverClient().backupServer("srv-123", "pre-update").execute();
     ```
 
 === "JavaScript"

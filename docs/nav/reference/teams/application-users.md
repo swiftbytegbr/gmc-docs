@@ -9,7 +9,7 @@ List application-user mappings for your team (apps with access to the team).
 === "Java"
 
     ```java
-    java.util.List<ApplicationUser> users = client.teamClient().getApplicationUsers().execute();
+    java.util.List<ApplicationUser> users = gmc.teamClient().getApplicationUsers().execute();
     ```
 
 === "JavaScript"

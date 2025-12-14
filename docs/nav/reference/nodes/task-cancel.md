@@ -10,7 +10,7 @@ Cancel a cancellable task on a node.
 === "Java"
 
     ```java
-    client.nodeClient().cancelNodeTask("node-123", "task-1").execute();
+    gmc.nodeClient().cancelNodeTask("node-123", "task-1").execute();
     ```
 
 === "JavaScript"

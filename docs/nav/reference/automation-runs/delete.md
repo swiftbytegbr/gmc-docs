@@ -9,7 +9,7 @@ Delete a run record by ID.
 === "Java"
 
     ```java
-    client.automationRunClient().deleteRun("run-1").execute();
+    gmc.automationRunClient().deleteRun("run-1").execute();
     ```
 
 === "JavaScript"

@@ -4,13 +4,13 @@ Setting profiles capture configuration for your servers in a structured way. Bes
 
 ## Java
 ```java
-SettingProfile profile = client.settingProfileClient().getProfile("prof-1").execute();
-String gameIni = client.settingProfileClient().getGameIni("prof-1").execute();
-String gusIni = client.settingProfileClient().getGameUserSettingsIni("prof-1").execute();
+SettingProfile profile = gmc.settingProfileClient().getProfile("prof-1").execute();
+String gameIni = gmc.settingProfileClient().getGameIni("prof-1").execute();
+String gusIni = gmc.settingProfileClient().getGameUserSettingsIni("prof-1").execute();
 
 SettingProfileUpdateRequest update = new SettingProfileUpdateRequest();
 update.setProfileId("prof-1");
-client.settingProfileClient().updateProfile(update).execute();
+gmc.settingProfileClient().updateProfile(update).execute();
 ```
 
 ## JavaScript

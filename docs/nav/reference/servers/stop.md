@@ -10,7 +10,7 @@ Gracefully stop a running server.
 === "Java"
 
     ```java
-    client.serverClient().stopServer("srv-123").execute();
+    gmc.serverClient().stopServer("srv-123").execute();
     ```
 
 === "JavaScript"

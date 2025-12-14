@@ -11,7 +11,7 @@ Invite a user to your team by email.
 === "Java"
 
     ```java
-    client.teamClient().inviteMember("dev@example.com").execute();
+    gmc.teamClient().inviteMember("dev@example.com").execute();
     ```
 
 === "JavaScript"

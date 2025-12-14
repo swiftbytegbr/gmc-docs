@@ -10,9 +10,9 @@ Parse a raw INI file into a structured map.
 === "Java"
 
     ```java
-    de.swiftbyte.gmc.sdk.model.setting.FileBody body = new de.swiftbyte.gmc.sdk.model.setting.FileBody().setFile("[ServerSettings]\nMaxPlayers=64");
+    FileBody body = new FileBody().setFile("[ServerSettings]\nMaxPlayers=64");
     java.util.LinkedHashMap<String, java.util.LinkedHashMap<String, Object>> parsed =
-        client.settingProfileClient().parseIni(body).execute();
+        gmc.settingProfileClient().parseIni(body).execute();
     ```
 
 === "JavaScript"

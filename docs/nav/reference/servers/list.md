@@ -10,7 +10,7 @@ List all servers for your team.
 === "Java"
 
     ```java
-    java.util.List<GameServer> servers = client.serverClient().getGameServers().execute();
+    java.util.List<GameServer> servers = gmc.serverClient().getGameServers().execute();
     ```
 
 === "JavaScript"

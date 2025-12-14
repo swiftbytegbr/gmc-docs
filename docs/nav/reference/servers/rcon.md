@@ -11,7 +11,7 @@ Send an RCON command to a running server.
 === "Java"
 
     ```java
-    client.serverClient().rconCommand("srv-123", "status").execute();
+    gmc.serverClient().rconCommand("srv-123", "status").execute();
     ```
 
 === "JavaScript"

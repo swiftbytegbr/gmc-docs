@@ -10,7 +10,7 @@ Start a stopped server.
 === "Java"
 
     ```java
-    client.serverClient().startServer("srv-123").execute();
+    gmc.serverClient().startServer("srv-123").execute();
     ```
 
 === "JavaScript"

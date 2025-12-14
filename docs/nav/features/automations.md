@@ -9,12 +9,12 @@ List automations, create/edit/delete them, trigger manual runs, and explore the 
 
 ## Java
 ```java
-java.util.List<Automation> list = client.automationClient().listAutomations().execute();
+java.util.List<Automation> list = gmc.automationClient().listAutomations().execute();
 AutomationCreateRequest create = new AutomationCreateRequest();
-create.setTeamId(client.getTeamId());
+create.setTeamId(gmc.getTeamId());
 create.setName("Nightly Restart");
-Automation created = client.automationClient().createAutomation(create).execute();
-AutomationRun run = client.automationClient().triggerManual(created.getId(), new ManualTriggerRequest()).execute();
+Automation created = gmc.automationClient().createAutomation(create).execute();
+AutomationRun run = gmc.automationClient().triggerManual(created.getId(), new ManualTriggerRequest()).execute();
 ```
 
 ## JavaScript

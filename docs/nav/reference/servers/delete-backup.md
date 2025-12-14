@@ -11,7 +11,7 @@ Delete a specific backup by its ID.
 === "Java"
 
     ```java
-    client.serverClient().deleteBackup("srv-123", "backup-1").execute();
+    gmc.serverClient().deleteBackup("srv-123", "backup-1").execute();
     ```
 
 === "JavaScript"

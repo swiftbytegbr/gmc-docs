@@ -11,7 +11,7 @@ Set a member's permissions within the team.
 === "Java"
 
     ```java
-    client.teamClient().changeMemberPermission("user-123", List.of(Permission.ADMIN)).execute();
+    gmc.teamClient().changeMemberPermission("user-123", java.util.List.of(Permission.MANAGE_SERVERS)).execute();
     ```
 
 === "JavaScript"

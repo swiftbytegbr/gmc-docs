@@ -11,7 +11,7 @@ Set a human-friendly display name for a server.
 === "Java"
 
     ```java
-    client.serverClient().changeDisplayName("srv-123", "Public #1").execute();
+    gmc.serverClient().changeDisplayName("srv-123", "Public #1").execute();
     ```
 
 === "JavaScript"

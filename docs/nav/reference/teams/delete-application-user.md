@@ -9,7 +9,7 @@ Remove an application-user mapping by application ID.
 === "Java"
 
     ```java
-    client.teamClient().deleteApplicationUser("app-123").execute();
+    gmc.teamClient().deleteApplicationUser("app-123").execute();
     ```
 
 === "JavaScript"

@@ -7,27 +7,10 @@ Fetch a single node by ID.
 - Returns: Node
 - Backend behavior: Only nodes from your team are visible; otherwise 404. No side effects.
 
-## Response
-Example:
-```json
-{
-  "id": "node-123",
-  "teamId": "team-1",
-  "inviteToken": 123456,
-  "daemonVersion": "1.5.2",
-  "lastAlive": "2025-01-01T12:34:56Z",
-  "lastLogin": "2025-01-01T12:30:00Z",
-  "logoutReason": null,
-  "status": "ONLINE",
-  "settings": {},
-  "systemData": {}
-}
-```
-
 === "Java"
 
     ```java
-    Node node = client.nodeClient().getNode("node-123").execute();
+    Node node = gmc.nodeClient().getNode("node-123").execute();
     ```
 
 === "JavaScript"
@@ -50,3 +33,20 @@ Example:
       -H "Application-Token: $GMC_APP_TOKEN" \
       https://api.gamemanager.cloud/node/node-123
     ```
+
+## Response
+Example:
+```json
+{
+  "id": "node-123",
+  "teamId": "team-1",
+  "inviteToken": 123456,
+  "daemonVersion": "1.5.2",
+  "lastAlive": "2025-01-01T12:34:56Z",
+  "lastLogin": "2025-01-01T12:30:00Z",
+  "logoutReason": null,
+  "status": "ONLINE",
+  "settings": {},
+  "systemData": {}
+}
+```

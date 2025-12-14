@@ -4,7 +4,7 @@ Some resources in GMC are binary assets (icons, images, downloadable content). T
 
 ## Java
 ```java
-byte[] bytes = client.imageClient().getImage("img-123").execute();
+byte[] bytes = gmc.imageClient().getImage("img-123").execute();
 Files.write(Path.of("output.png"), bytes);
 ```
 

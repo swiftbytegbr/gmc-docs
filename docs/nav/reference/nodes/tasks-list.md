@@ -10,7 +10,7 @@ List tasks scheduled or in-progress on a node.
 === "Java"
 
     ```java
-    java.util.List<NodeTask> tasks = client.nodeClient().getNodeTasks("node-123").execute();
+    java.util.List<NodeTask> tasks = gmc.nodeClient().getNodeTasks("node-123").execute();
     ```
 
 === "JavaScript"

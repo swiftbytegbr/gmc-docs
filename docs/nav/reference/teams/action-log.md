@@ -10,7 +10,7 @@ Retrieve a paginated action log for your team.
 === "Java"
 
     ```java
-    Page<ActionLogItem> page = client.teamClient().getActionLog(0, 25).execute();
+    Page<ActionLogItem> page = gmc.teamClient().getActionLog(0, 25).execute();
     ```
 
 === "JavaScript"

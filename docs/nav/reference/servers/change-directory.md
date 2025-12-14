@@ -11,7 +11,7 @@ Set a new directory path for the server's files.
 === "Java"
 
     ```java
-    client.serverClient().changeDirectory("srv-123", "/servers/cs2").execute();
+    gmc.serverClient().changeDirectory("srv-123", "/servers/cs2").execute();
     ```
 
 === "JavaScript"

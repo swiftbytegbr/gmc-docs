@@ -9,7 +9,7 @@ Return backend version information.
 === "Java"
 
     ```java
-    GmcVersion version = client.infoClient().getVersion().execute();
+    GmcVersion version = gmc.infoClient().getVersion().execute();
     ```
 
 === "JavaScript"

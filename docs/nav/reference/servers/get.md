@@ -7,6 +7,31 @@ Fetch a single server by ID.
 - Returns: GameServer
 - Backend behavior: 404 if not within your team.
 
+=== "Java"
+
+    ```java
+    GameServer srv = gmc.serverClient().getGameServer("srv-123").execute();
+    ```
+
+=== "JavaScript"
+
+    ```ts
+    const srv = await client.serverClient.getGameServer('srv-123');
+    ```
+
+=== "Python"
+
+    ```python
+    srv = client.server_client.get_game_server('srv-123')
+    ```
+
+=== "REST"
+
+    ```bash
+    curl -s -H "Application-Token: $GMC_APP_TOKEN" \
+      https://api.gamemanager.cloud/server/srv-123
+    ```
+
 ## Response
 Example:
 ```json
@@ -31,28 +56,3 @@ Example:
   "rconPort": 27017
 }
 ```
-
-=== "Java"
-
-    ```java
-    GameServer srv = client.serverClient().getGameServer("srv-123").execute();
-    ```
-
-=== "JavaScript"
-
-    ```ts
-    const srv = await client.serverClient.getGameServer('srv-123');
-    ```
-
-=== "Python"
-
-    ```python
-    srv = client.server_client.get_game_server('srv-123')
-    ```
-
-=== "REST"
-
-    ```bash
-    curl -s -H "Application-Token: $GMC_APP_TOKEN" \
-      https://api.gamemanager.cloud/server/srv-123
-    ```
