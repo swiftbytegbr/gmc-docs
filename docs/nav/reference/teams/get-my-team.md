@@ -7,6 +7,22 @@ Return the team associated with your application credentials. This also allows S
 - Returns: Team
 - Backend behavior: Returns the first/primary team for the application user. 404 if not linked to any team.
 
+## Response
+Example:
+```json
+{
+  "id": "team-1",
+  "name": "Dev Guild",
+  "iconBase64": null,
+  "owner": { "id": "u1", "name": "Alice", "email": "alice@example.com", "permissions": ["ALL"] },
+  "members": [],
+  "applications": { "app-1": ["MANAGE_SERVERS", "ACCESS_SERVERS"] },
+  "invitedMembers": ["bob@example.com"],
+  "inviteCode": "ABCD1234",
+  "actionLog": []
+}
+```
+
 === "Java"
 ```java
 var team = client.teamClient().getTeam(); // synchronous call

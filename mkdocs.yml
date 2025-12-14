@@ -20,6 +20,10 @@ nav:
       - Settings: nav/features/settings.md
       - Info & Version: nav/features/info.md
   - Guides:
+      - Concepts & Architecture: nav/guides/concepts.md
+      - Pagination & Filtering: nav/guides/pagination.md
+      - Rate Limiting & Retries: nav/guides/rate-limits.md
+      - Security & Compliance: nav/guides/security.md
       - Async & Concurrency: nav/guides/async.md
       - Errors & Troubleshooting: nav/guides/errors.md
 
@@ -141,6 +145,17 @@ nav:
           - Get Image: nav/reference/images/get-image.md
       - Info:
           - Get Version: nav/reference/info/get-version.md
+  - Data Models:
+      - Node: nav/models/node.md
+      - Game Server: nav/models/game-server.md
+      - Game Server Statistic: nav/models/game-server-statistic.md
+      - Team: nav/models/team.md
+      - Permissions: nav/models/permissions.md
+      - Automation: nav/models/automation.md
+      - Automation Run: nav/models/automation-run.md
+      - Setting Profile: nav/models/setting-profile.md
+      - Page<T>: nav/models/page.md
+      - Version Info: nav/models/version.md
   - Guides:
       - Async & Concurrency: nav/guides/async.md
       - Errors & Troubleshooting: nav/guides/errors.md

@@ -7,6 +7,37 @@ List runs for your team with optional filters.
 - Returns: `Page<AutomationRun>`
 - Filters: `page`, `size`, `automationId`, `statuses`, `createdFrom`, `createdTo`
 
+## Response
+Example page payload:
+```json
+{
+  "content": [
+    {
+      "id": "run-1",
+      "automationId": "auto-1",
+      "teamId": "team-1",
+      "status": "RUNNING",
+      "createdAt": "2025-01-02T00:00:00Z",
+      "startedAt": "2025-01-02T00:00:05Z",
+      "finishedAt": null,
+      "targetIds": { "srv-1": true },
+      "currentStep": {},
+      "stepHistory": [],
+      "cancelRequested": false,
+      "workflowSize": 3
+    }
+  ],
+  "page": 0,
+  "size": 25,
+  "totalElements": 1,
+  "totalPages": 1,
+  "first": true,
+  "last": true,
+  "numberOfElements": 1,
+  "empty": false
+}
+```
+
 === "Java"
 ```java
 var runs = client.automationRunClient().listRuns(0, 25, null, null, null, null).execute();

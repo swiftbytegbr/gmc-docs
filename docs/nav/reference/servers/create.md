@@ -8,6 +8,35 @@ Create a new game server on a node.
 - Returns: GameServer
 - Backend behavior: Allocates resources on the node, prepares files, and registers the server. May take time.
 
+## Request body
+```json
+{
+  "nodeId": "node-123",
+  "name": "My Server",
+  "gameType": "CS2",
+  "map": "de_dust2",
+  "serverDirectory": "/servers/cs2",
+  "enablePreaquaticaBeta": false
+}
+```
+
+## Response
+Returns a `GameServer` object. Example:
+```json
+{
+  "id": "srv-abc",
+  "displayName": "My Server",
+  "nodeId": "node-123",
+  "created": "2025-01-02T10:00:00Z",
+  "version": "v1.0",
+  "gameType": "CS2",
+  "state": "STOPPED",
+  "settingProfileId": "prof-1",
+  "serverDirectory": "/servers/cs2",
+  "onlinePlayers": 0
+}
+```
+
 === "Java"
 ```java
 var created = client.serverClient()

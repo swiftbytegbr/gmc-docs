@@ -8,6 +8,37 @@ Create a new automation.
 - Returns: Automation
 - Backend behavior: Validates team ownership and request fields. New automation becomes available for runs.
 
+## Request body
+```json
+{
+  "teamId": "team-1",
+  "name": "Nightly Restart",
+  "description": "Restart servers every night",
+  "enabled": true,
+  "targets": { /* selector */ },
+  "workflow": [ /* steps */ ],
+  "trigger": { /* schedule */ },
+  "runTimeoutSec": 1800
+}
+```
+
+## Response
+```json
+{
+  "id": "auto-1",
+  "teamId": "team-1",
+  "name": "Nightly Restart",
+  "description": "Restart servers every night",
+  "enabled": true,
+  "createdAt": "2025-01-01T00:00:00Z",
+  "updatedAt": "2025-01-01T00:00:00Z",
+  "targets": {},
+  "workflow": [],
+  "trigger": null,
+  "runTimeoutSec": 1800
+}
+```
+
 === "Java"
 ```java
 var req = new AutomationCreateRequest();
