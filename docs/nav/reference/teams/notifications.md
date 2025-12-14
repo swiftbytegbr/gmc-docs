@@ -1,15 +1,20 @@
 # Get Notifications
 
-Fetch team notifications; optionally filter unread only.
+Fetch notifications for your team. You can filter to only unread notifications using the `onlyUnread` flag.
 
 - Method: GET
 - Path (REST): `/team/{teamId}/notifications?onlyUnread=true|false`
 - Returns: Array of Notification
 
+### About `onlyUnread`
+- `true`: returns only notifications that are currently marked as unread
+- `false` (or omitted): returns all notifications (read and unread)
+Use the unread count endpoint (`/team/{teamId}/notifications/unread-count`) when you just need a number without transferring the full list.
+
 === "Java"
 
     ```java
-    java.util.List<Notification> notifications = client.teamClient().getNotifications(true).execute();
+    java.util.List<Notification> notifications = gmc.teamClient().getNotifications(true).execute();
     ```
 
 === "JavaScript"

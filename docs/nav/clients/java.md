@@ -70,10 +70,9 @@ gmc.serverClient().changeDisplayName("srv-123", "Public Server #1").execute();
 ## Teams
 ```java
 Team team = gmc.teamClient().getTeam();
-gmc.teamClient().inviteMember(team.getId(), "dev@example.com").execute();
-gmc.teamClient().kickMember(team.getId(), "user-123").execute();
-gmc.teamClient().setPermission(team.getId(), "user-123", java.util.List.of("ADMIN")).execute();
-gmc.teamClient().deleteTeam(team.getId()).execute();
+gmc.teamClient().inviteMember("dev@example.com").execute();
+gmc.teamClient().kickMember("user-123").execute();
+gmc.teamClient().changeMemberPermission("user-123", java.util.List.of(Permission.MANAGE_SERVERS)).execute();
 java.util.List<Notification> notifications = gmc.teamClient().getNotifications(true).execute();
 long unread = gmc.teamClient().getUnreadNotificationCount().execute();
 ```

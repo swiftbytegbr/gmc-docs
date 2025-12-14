@@ -1,4 +1,4 @@
-site_name: GMC Documentation
+site_name: GMC APIDocumentation
 site_description: Official documentation for Game Manager Cloud (GMC) REST API and client SDKs (Java, JavaScript, Python)
 copyright: Copyright © 2025 Swiftbyte / GMC
 
@@ -68,11 +68,11 @@ nav:
       - Edit Automation: nav/reference/automations/edit.md
       - Delete Automation: nav/reference/automations/delete.md
       - Trigger Manual: nav/reference/automations/trigger-manual.md
-  - Automation Runs:
-      - List Runs: nav/reference/automation-runs/list.md
-      - Get Run: nav/reference/automation-runs/get.md
-      - Cancel Run: nav/reference/automation-runs/cancel.md
-      - Delete Run: nav/reference/automation-runs/delete.md
+      - Runs:
+          - List Runs: nav/reference/automation-runs/list.md
+          - Get Run: nav/reference/automation-runs/get.md
+          - Cancel Run: nav/reference/automation-runs/cancel.md
+          - Delete Run: nav/reference/automation-runs/delete.md
   - Settings:
       - Get Profile: nav/reference/settings/get-profile.md
       - Get game.ini: nav/reference/settings/get-game-ini.md
@@ -83,31 +83,31 @@ nav:
       - Copy ARK Profiles: nav/reference/settings/copy-ark-profiles.md
   - Images:
       - Get Image: nav/reference/images/get-image.md
-  - Info:
-      - Get Version: nav/reference/info/get-version.md
-  - Data Models:
-      - Node: nav/models/node.md
-      - Game Server: nav/models/game-server.md
-      - Game Server Statistic: nav/models/game-server-statistic.md
-      - Team: nav/models/team.md
-      - Permissions: nav/models/permissions.md
-      - Automation: nav/models/automation.md
-      - Automation Run: nav/models/automation-run.md
-      - Setting Profile: nav/models/setting-profile.md
-      - Page<T>: nav/models/page.md
-      - Version Info: nav/models/version.md
-  - Guides:
-      - Concepts & Architecture: nav/guides/concepts.md
-      - Pagination & Filtering: nav/guides/pagination.md
-      - Rate Limiting & Retries: nav/guides/rate-limits.md
-      - Security & Compliance: nav/guides/security.md
-      - Async & Concurrency: nav/guides/async.md
-      - Errors & Troubleshooting: nav/guides/errors.md
+  - Home (More):
+      - Info & Version: nav/features/info.md
+      - Data Models:
+          - Node: nav/models/node.md
+          - Game Server: nav/models/game-server.md
+          - Game Server Statistic: nav/models/game-server-statistic.md
+          - Team: nav/models/team.md
+          - Permissions: nav/models/permissions.md
+          - Automation: nav/models/automation.md
+          - Automation Run: nav/models/automation-run.md
+          - Setting Profile: nav/models/setting-profile.md
+          - Page<T>: nav/models/page.md
+          - Version Info: nav/models/version.md
+      - Guides:
+          - Concepts & Architecture: nav/guides/concepts.md
+          - Pagination & Filtering: nav/guides/pagination.md
+          - Rate Limiting & Retries: nav/guides/rate-limits.md
+          - Security & Compliance: nav/guides/security.md
+          - Async & Concurrency: nav/guides/async.md
+          - Errors & Troubleshooting: nav/guides/errors.md
 
 theme:
   name: material
-  logo: assets/gmc-banner.webp
-  favicon: assets/gmc-banner.webp
+  logo: assets/gmc-logo.png
+  favicon: assets/gmc-logo.png
   custom_dir: overrides
   features:
     - content.tabs.link

@@ -9,17 +9,17 @@ Fetch your team, manage members and permissions, upload team icons, review notif
 
 ## Java
 ```java
-Team team = client.teamClient().getTeam();
-client.teamClient().inviteMember("dev@example.com").execute();
-client.teamClient().kickMember("user-123").execute();
-client.teamClient().changeMemberPermission("user-123", List.of(Permission.ADMIN)).execute();
-client.teamClient().changeTeamIcon(Files.readAllBytes(Path.of("icon.png")), "icon.png").execute();
-Page<ActionLogItem> page = client.teamClient().getActionLog(0, 25).execute();
-List<ApplicationUser> users = client.teamClient().getApplicationUsers().execute();
-client.teamClient().revokeInvite("user-123").execute();
-client.teamClient().deleteApplicationUser("app-123").execute();
-List<Notification> notifications = client.teamClient().getNotifications(true).execute();
-long unread = client.teamClient().getUnreadNotificationCount().execute();
+Team team = gmc.teamClient().getTeam();
+gmc.teamClient().inviteMember("dev@example.com").execute();
+gmc.teamClient().kickMember("user-123").execute();
+gmc.teamClient().changeMemberPermission("user-123", java.util.List.of(Permission.MANAGE_SERVERS)).execute();
+gmc.teamClient().changeTeamIcon(Files.readAllBytes(Path.of("icon.png")), "icon.png").execute();
+Page<ActionLogItem> page = gmc.teamClient().getActionLog(0, 25).execute();
+List<ApplicationUser> users = gmc.teamClient().getApplicationUsers().execute();
+gmc.teamClient().revokeInvite("user-123").execute();
+gmc.teamClient().deleteApplicationUser("app-123").execute();
+List<Notification> notifications = gmc.teamClient().getNotifications(true).execute();
+long unread = gmc.teamClient().getUnreadNotificationCount().execute();
 ```
 
 ## JavaScript
@@ -27,7 +27,7 @@ long unread = client.teamClient().getUnreadNotificationCount().execute();
 const team = await client.teamClient.getTeam();
 await client.teamClient.inviteMember('dev@example.com');
 await client.teamClient.kickMember('user-123');
-await client.teamClient.setPermission('user-123', ['ADMIN']);
+await client.teamClient.setPermission('user-123', ['MANAGE_SERVERS']);
 const notifications = await client.teamClient.getNotifications(true);
 const unread = await client.teamClient.getUnreadNotificationCount();
 ```
@@ -37,7 +37,7 @@ const unread = await client.teamClient.getUnreadNotificationCount();
 team = client.team_client.get_team()
 client.team_client.invite_member('dev@example.com')
 client.team_client.kick_member('user-123')
-client.team_client.set_permission('user-123', ['ADMIN'])
+client.team_client.set_permission('user-123', ['MANAGE_SERVERS'])
 notifications = client.team_client.get_notifications(only_unread=True)
 unread = client.team_client.get_unread_notification_count()
 ```
