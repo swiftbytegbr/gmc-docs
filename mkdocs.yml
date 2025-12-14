@@ -3,14 +3,15 @@ site_description: Official documentation for Game Manager Cloud (GMC) REST API a
 copyright: Copyright © 2025 Swiftbyte / GMC
 
 nav:
-  - Home: index.md
-  - Getting Started: nav/getting-started.md
-  - Authentication: nav/authentication.md
-  - Clients:
-      - Java (default): nav/clients/java.md
-      - JavaScript: nav/clients/javascript.md
-      - Python: nav/clients/python.md
-      - REST API: nav/rest.md
+  - Home:
+      - Overview: index.md
+      - Getting Started: nav/getting-started.md
+      - Authentication: nav/authentication.md
+      - Clients:
+          - Java (default): nav/clients/java.md
+          - JavaScript: nav/clients/javascript.md
+          - Python: nav/clients/python.md
+          - REST API: nav/rest.md
   - Features:
       - Nodes: nav/features/nodes.md
       - Servers: nav/features/servers.md
@@ -19,6 +20,82 @@ nav:
       - Images & Files: nav/features/images.md
       - Settings: nav/features/settings.md
       - Info & Version: nav/features/info.md
+  - Nodes:
+      - List Nodes (by team): nav/reference/nodes/list.md
+      - Get Node: nav/reference/nodes/get.md
+      - Update Node: nav/reference/nodes/update.md
+      - Change Settings: nav/reference/nodes/change-settings.md
+      - Delete Node: nav/reference/nodes/delete.md
+      - Latest Version: nav/reference/nodes/latest-version.md
+      - List Tasks: nav/reference/nodes/tasks-list.md
+      - Get Task: nav/reference/nodes/task-get.md
+      - Cancel Task: nav/reference/nodes/task-cancel.md
+  - Servers:
+      - List Servers (by team): nav/reference/servers/list.md
+      - List Servers (by node): nav/reference/servers/list-by-node.md
+      - Get Server: nav/reference/servers/get.md
+      - Get Statistics: nav/reference/servers/get-statistics.md
+      - Get Max Players: nav/reference/servers/get-max-players.md
+      - Start Server: nav/reference/servers/start.md
+      - Stop Server: nav/reference/servers/stop.md
+      - Restart Server: nav/reference/servers/restart.md
+      - Update Server: nav/reference/servers/update.md
+      - Reset Settings: nav/reference/servers/reset-settings.md
+      - Backup Server: nav/reference/servers/backup.md
+      - Delete Backup: nav/reference/servers/delete-backup.md
+      - Delete Server: nav/reference/servers/delete.md
+      - Rollback Server: nav/reference/servers/rollback.md
+      - RCON Command: nav/reference/servers/rcon.md
+      - Create Server: nav/reference/servers/create.md
+      - Change Directory: nav/reference/servers/change-directory.md
+      - Change Display Name: nav/reference/servers/change-display-name.md
+  - Teams:
+      - Get My Team: nav/reference/teams/get-my-team.md
+      - Invite Member: nav/reference/teams/invite.md
+      - Kick Member: nav/reference/teams/kick.md
+      - Change Member Permission: nav/reference/teams/change-permission.md
+      - Upload Icon: nav/reference/teams/icon-upload.md
+      - Get Action Log: nav/reference/teams/action-log.md
+      - Get Application Users: nav/reference/teams/application-users.md
+      - Delete Application User: nav/reference/teams/delete-application-user.md
+      - Revoke Invite: nav/reference/teams/revoke-invite.md
+      - Get Notifications: nav/reference/teams/notifications.md
+      - Unread Notification Count: nav/reference/teams/unread-count.md
+  - Automations:
+      - List Automations: nav/reference/automations/list.md
+      - Get Automation: nav/reference/automations/get.md
+      - Create Automation: nav/reference/automations/create.md
+      - Edit Automation: nav/reference/automations/edit.md
+      - Delete Automation: nav/reference/automations/delete.md
+      - Trigger Manual: nav/reference/automations/trigger-manual.md
+  - Automation Runs:
+      - List Runs: nav/reference/automation-runs/list.md
+      - Get Run: nav/reference/automation-runs/get.md
+      - Cancel Run: nav/reference/automation-runs/cancel.md
+      - Delete Run: nav/reference/automation-runs/delete.md
+  - Settings:
+      - Get Profile: nav/reference/settings/get-profile.md
+      - Get game.ini: nav/reference/settings/get-game-ini.md
+      - Get GameUserSettings.ini: nav/reference/settings/get-gus-ini.md
+      - Update Profile: nav/reference/settings/update-profile.md
+      - Parse INI: nav/reference/settings/parse-ini.md
+      - Generate INI: nav/reference/settings/generate-ini.md
+      - Copy ARK Profiles: nav/reference/settings/copy-ark-profiles.md
+  - Images:
+      - Get Image: nav/reference/images/get-image.md
+  - Info:
+      - Get Version: nav/reference/info/get-version.md
+  - Data Models:
+      - Node: nav/models/node.md
+      - Game Server: nav/models/game-server.md
+      - Game Server Statistic: nav/models/game-server-statistic.md
+      - Team: nav/models/team.md
+      - Permissions: nav/models/permissions.md
+      - Automation: nav/models/automation.md
+      - Automation Run: nav/models/automation-run.md
+      - Setting Profile: nav/models/setting-profile.md
+      - Page<T>: nav/models/page.md
+      - Version Info: nav/models/version.md
   - Guides:
       - Concepts & Architecture: nav/guides/concepts.md
       - Pagination & Filtering: nav/guides/pagination.md
@@ -35,6 +112,7 @@ theme:
   features:
     - content.tabs.link
     - content.code.copy
+    - navigation.tabs
     - navigation.expand
     - navigation.footer
     - toc.integrate
@@ -58,126 +136,3 @@ extra:
       href: "https://app.gamemanager.cloud/privacy-policy"
     - text: "Imprint"
       href: "https://app.gamemanager.cloud/imprint"
-site_name: GMC Documentation
-site_description: Official documentation for Game Manager Cloud (GMC) REST API and client SDKs (Java, JavaScript, Python)
-copyright: Copyright © 2025 Swiftbyte / GMC
-
-nav:
-  - Home: index.md
-  - Getting Started: nav/getting-started.md
-  - Authentication: nav/authentication.md
-  - Clients:
-      - Java (default): nav/clients/java.md
-      - JavaScript: nav/clients/javascript.md
-      - Python: nav/clients/python.md
-      - REST API: nav/rest.md
-  - Features (Overview):
-      - Nodes: nav/features/nodes.md
-      - Servers: nav/features/servers.md
-      - Automations: nav/features/automations.md
-      - Teams: nav/features/teams.md
-      - Images & Files: nav/features/images.md
-      - Settings: nav/features/settings.md
-      - Info & Version: nav/features/info.md
-  - Reference:
-      - Nodes:
-          - List Nodes (by team): nav/reference/nodes/list.md
-          - Get Node: nav/reference/nodes/get.md
-          - Update Node: nav/reference/nodes/update.md
-          - Change Settings: nav/reference/nodes/change-settings.md
-          - Delete Node: nav/reference/nodes/delete.md
-          - Latest Version: nav/reference/nodes/latest-version.md
-          - List Tasks: nav/reference/nodes/tasks-list.md
-          - Get Task: nav/reference/nodes/task-get.md
-          - Cancel Task: nav/reference/nodes/task-cancel.md
-      - Servers:
-          - List Servers (by team): nav/reference/servers/list.md
-          - List Servers (by node): nav/reference/servers/list-by-node.md
-          - Get Server: nav/reference/servers/get.md
-          - Get Statistics: nav/reference/servers/get-statistics.md
-          - Get Max Players: nav/reference/servers/get-max-players.md
-          - Start Server: nav/reference/servers/start.md
-          - Stop Server: nav/reference/servers/stop.md
-          - Restart Server: nav/reference/servers/restart.md
-          - Update Server: nav/reference/servers/update.md
-          - Reset Settings: nav/reference/servers/reset-settings.md
-          - Backup Server: nav/reference/servers/backup.md
-          - Delete Backup: nav/reference/servers/delete-backup.md
-          - Delete Server: nav/reference/servers/delete.md
-          - Rollback Server: nav/reference/servers/rollback.md
-          - RCON Command: nav/reference/servers/rcon.md
-          - Create Server: nav/reference/servers/create.md
-          - Change Directory: nav/reference/servers/change-directory.md
-          - Change Display Name: nav/reference/servers/change-display-name.md
-      - Teams:
-          - Get My Team: nav/reference/teams/get-my-team.md
-          - Invite Member: nav/reference/teams/invite.md
-          - Kick Member: nav/reference/teams/kick.md
-          - Change Member Permission: nav/reference/teams/change-permission.md
-          - Upload Icon: nav/reference/teams/icon-upload.md
-          - Get Action Log: nav/reference/teams/action-log.md
-          - Get Application Users: nav/reference/teams/application-users.md
-          - Delete Application User: nav/reference/teams/delete-application-user.md
-          - Revoke Invite: nav/reference/teams/revoke-invite.md
-          - Get Notifications: nav/reference/teams/notifications.md
-          - Unread Notification Count: nav/reference/teams/unread-count.md
-      - Automations:
-          - List Automations: nav/reference/automations/list.md
-          - Get Automation: nav/reference/automations/get.md
-          - Create Automation: nav/reference/automations/create.md
-          - Edit Automation: nav/reference/automations/edit.md
-          - Delete Automation: nav/reference/automations/delete.md
-          - Trigger Manual: nav/reference/automations/trigger-manual.md
-      - Automation Runs:
-          - List Runs: nav/reference/automation-runs/list.md
-          - Get Run: nav/reference/automation-runs/get.md
-          - Cancel Run: nav/reference/automation-runs/cancel.md
-          - Delete Run: nav/reference/automation-runs/delete.md
-      - Settings:
-          - Get Profile: nav/reference/settings/get-profile.md
-          - Get game.ini: nav/reference/settings/get-game-ini.md
-          - Get GameUserSettings.ini: nav/reference/settings/get-gus-ini.md
-          - Update Profile: nav/reference/settings/update-profile.md
-          - Parse INI: nav/reference/settings/parse-ini.md
-          - Generate INI: nav/reference/settings/generate-ini.md
-          - Copy ARK Profiles: nav/reference/settings/copy-ark-profiles.md
-      - Images:
-          - Get Image: nav/reference/images/get-image.md
-      - Info:
-          - Get Version: nav/reference/info/get-version.md
-  - Data Models:
-      - Node: nav/models/node.md
-      - Game Server: nav/models/game-server.md
-      - Game Server Statistic: nav/models/game-server-statistic.md
-      - Team: nav/models/team.md
-      - Permissions: nav/models/permissions.md
-      - Automation: nav/models/automation.md
-      - Automation Run: nav/models/automation-run.md
-      - Setting Profile: nav/models/setting-profile.md
-      - Page<T>: nav/models/page.md
-      - Version Info: nav/models/version.md
-  - Guides:
-      - Async & Concurrency: nav/guides/async.md
-      - Errors & Troubleshooting: nav/guides/errors.md
-
-theme:
-  name: material
-  features:
-    - content.tabs.link
-    - content.code.copy
-    - navigation.expand
-    - navigation.footer
-    - toc.integrate
-
-markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
-  - toc:
-      permalink: true
-  - tables
-
-plugins:
-  - search
