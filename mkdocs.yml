@@ -52,8 +52,6 @@ nav:
       - List Servers (by team): nav/reference/servers/list.md
       - List Servers (by node): nav/reference/servers/list-by-node.md
       - Get Server: nav/reference/servers/get.md
-      - Get Statistics: nav/reference/servers/get-statistics.md
-      - Get Max Players: nav/reference/servers/get-max-players.md
       - Start Server: nav/reference/servers/start.md
       - Stop Server: nav/reference/servers/stop.md
       - Restart Server: nav/reference/servers/restart.md

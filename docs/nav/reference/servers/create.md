@@ -26,9 +26,9 @@ Returns a `GameServer` object. Example:
 {
   "id": "srv-abc",
   "displayName": "My Server",
+  "teamId": "team-1",
   "nodeId": "node-123",
   "created": "2025-01-02T10:00:00Z",
-  "version": "v1.0",
   "gameType": "CS2",
   "state": "STOPPED",
   "settingProfileId": "prof-1",

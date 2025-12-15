@@ -5,7 +5,7 @@ Send an RCON command to a running server.
 - Method: POST
 - Path (REST): `/server/{serverId}/rcon`
 - Body: `{ "command": "status" }`
-- Returns: 200 OK (output is delivered via RCON response events)
+- Returns: 200 OK (output is delivered via RCON response stomp packet or can be retrieved from the server model)
 - Backend behavior: Requires the server to be ONLINE and RCON configured.
 
 

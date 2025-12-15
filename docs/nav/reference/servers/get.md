@@ -40,7 +40,6 @@ Example:
   "displayName": "Public #1",
   "nodeId": "node-123",
   "created": "2025-01-01T12:00:00Z",
-  "version": "v1.0",
   "gameType": "ARK_ASCENDED",
   "state": "RUNNING",
   "settingProfileId": "prof-1",

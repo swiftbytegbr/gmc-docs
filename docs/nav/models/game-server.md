@@ -2,28 +2,29 @@
 
 Represents a controllable game server on a node.
 
-Fields:
+Core fields (entity):
 - `id` (string)
 - `displayName` (string)
+- `teamId` (string)
 - `nodeId` (string)
 - `created` (ISO datetime)
-- `version` (string)
 - `gameType` (enum): e.g., `ARK_EVOLVED`, `ARK_ASCENDED`
-- `state` (enum): runtime state (running, stopped, etc.)
+- `state` (enum): runtime state (e.g., `ONLINE`, `OFFLINE`, `RESTARTING`)
 - `settingProfileId` (string)
 - `serverDirectory` (string)
 - `onlinePlayers` (int)
 - `backups` (array): Backup metadata
 - `commands` (array): Supported RCON commands
-- Enriched by backend:
-  - `nodeName` (string)
-  - `serverIp` (string)
-  - `map` (string)
-  - `maxPlayers` (int)
-  - `modCount` (int)
-  - `serverPort` (int)
-  - `queryPort` (int)
-  - `rconPort` (int)
+
+Enriched fields (GET responses):
+- `nodeName` (string)
+- `serverIp` (string)
+- `map` (string)
+- `maxPlayers` (int)
+- `modCount` (int)
+- `serverPort` (int)
+- `queryPort` (int)
+- `rconPort` (int)
 
 Example:
 ```json
@@ -32,7 +33,7 @@ Example:
   "displayName": "Public #1",
   "nodeId": "node-123",
   "created": "2025-01-01T12:00:00Z",
-  "version": "v1.0",
+  "teamId": "team-1",
   "gameType": "ARK_ASCENDED",
   "state": "RUNNING",
   "settingProfileId": "prof-1",
