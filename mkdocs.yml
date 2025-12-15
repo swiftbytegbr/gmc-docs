@@ -12,7 +12,6 @@ nav:
           - JavaScript: nav/clients/javascript.md
           - Python: nav/clients/python.md
           - REST API: nav/rest.md
-      - Info & Version: nav/features/info.md
       - Guides:
           - Concepts & Architecture: nav/guides/concepts.md
           - Pagination & Filtering: nav/guides/pagination.md
