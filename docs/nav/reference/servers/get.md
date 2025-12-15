@@ -45,6 +45,24 @@ Example:
   "settingProfileId": "prof-1",
   "serverDirectory": "/servers/ark",
   "onlinePlayers": 12,
+  "backups": [
+    {
+      "backupId": "bck-1",
+      "serverId": "srv-123",
+      "createdAt": "2025-01-01T08:00:00Z",
+      "expiresAt": "2025-02-01T08:00:00Z",
+      "autoBackup": false,
+      "name": "pre-update",
+      "size": 104857600
+    }
+  ],
+  "commands": [
+    {
+      "command": "Broadcast Hello",
+      "response": "Message sent",
+      "timestamp": "2025-01-01T12:00:00Z"
+    }
+  ],
   "nodeName": "eu-west-1",
   "serverIp": "203.0.113.12",
   "map": "Fjordur",

@@ -33,7 +33,9 @@ Returns a `GameServer` object. Example:
   "state": "STOPPED",
   "settingProfileId": "prof-1",
   "serverDirectory": "/servers/cs2",
-  "onlinePlayers": 0
+  "onlinePlayers": 0,
+  "backups": [],
+  "commands": []
 }
 ```
 

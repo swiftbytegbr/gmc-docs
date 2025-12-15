@@ -33,6 +33,34 @@ List all servers for your team.
       https://api.gamemanager.cloud/server/by-team/$TEAM_ID
     ```
 
+## Response
+Example:
+```json
+[
+  {
+    "id": "srv-123",
+    "displayName": "Public #1",
+    "nodeId": "node-123",
+    "created": "2025-01-01T12:00:00Z",
+    "gameType": "ARK_ASCENDED",
+    "state": "RUNNING",
+    "settingProfileId": "prof-1",
+    "serverDirectory": "/servers/ark",
+    "onlinePlayers": 12,
+    "backups": [],
+    "commands": [],
+    "nodeName": "eu-west-1",
+    "serverIp": "203.0.113.12",
+    "map": "Fjordur",
+    "maxPlayers": 64,
+    "modCount": 0,
+    "serverPort": 27015,
+    "queryPort": 27016,
+    "rconPort": 27017
+  }
+]
+```
+
 ## Responses
 - 200 OK: List of servers.
 - 403 Forbidden: `missingPermission.ACCESS_SERVERS` — you lack read access in this team.
