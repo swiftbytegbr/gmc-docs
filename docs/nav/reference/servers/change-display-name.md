@@ -8,12 +8,6 @@ Set a human-friendly display name for a server.
 - Returns: 204 No Content
 - Backend behavior: Metadata only; no restart required.
 
-## Responses
-- 204 No Content: Name updated.
-- 403 Forbidden: `missingPermission.MANAGE_SERVERS` — you lack the permission to manage servers in this team.
-- 404 Not Found: `general.not_found` — server not found or not in your team.
-- 400 Bad Request: `validation.failed` — invalid display name.
-- 409 Conflict: `server.display_name_already_exists` — name already in use within the team.
 
 === "Java"
 
@@ -41,3 +35,10 @@ Set a human-friendly display name for a server.
       -d '{"displayName":"Public #1"}' \
       https://api.gamemanager.cloud/server/srv-123/change-display-name
     ```
+
+## Responses
+- 204 No Content: Name updated.
+- 403 Forbidden: `missingPermission.MANAGE_SERVERS` — you lack the permission to manage servers in this team.
+- 404 Not Found: `general.not_found` — server not found or not in your team.
+- 400 Bad Request: `validation.failed` — invalid display name.
+- 409 Conflict: `server.display_name_already_exists` — name already in use within the team.

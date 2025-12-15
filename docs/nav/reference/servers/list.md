@@ -7,10 +7,6 @@ List all servers for your team.
 - Returns: Array of GameServer
 - Backend behavior: Team-scoped; read-only.
 
-## Responses
-- 200 OK: List of servers.
-- 403 Forbidden: `missingPermission.ACCESS_SERVERS` — you lack read access in this team.
-- 404 Not Found: `general.not_found` — team not found.
 
 === "Java"
 
@@ -36,3 +32,8 @@ List all servers for your team.
     curl -s -H "Application-Token: $GMC_APP_TOKEN" \
       https://api.gamemanager.cloud/server/by-team/$TEAM_ID
     ```
+
+## Responses
+- 200 OK: List of servers.
+- 403 Forbidden: `missingPermission.ACCESS_SERVERS` — you lack read access in this team.
+- 404 Not Found: `general.not_found` — team not found.

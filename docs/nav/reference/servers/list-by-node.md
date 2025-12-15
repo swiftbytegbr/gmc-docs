@@ -7,10 +7,6 @@ List all servers hosted on a specific node.
 - Returns: Array of GameServer
 - Backend behavior: Read-only. Only servers your team owns are returned.
 
-## Responses
-- 200 OK: List of servers on the node.
-- 403 Forbidden: `missingPermission.ACCESS_SERVERS` — you lack read access for the node’s team.
-- 404 Not Found: `general.not_found` — node not found.
 
 === "Java"
 
@@ -36,3 +32,8 @@ List all servers hosted on a specific node.
     curl -s -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
       https://api.gamemanager.cloud/server/by-node/node-123
     ```
+
+## Responses
+- 200 OK: List of servers on the node.
+- 403 Forbidden: `missingPermission.ACCESS_SERVERS` — you lack read access for the node’s team.
+- 404 Not Found: `general.not_found` — node not found.

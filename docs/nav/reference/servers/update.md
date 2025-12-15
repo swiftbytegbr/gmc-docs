@@ -7,13 +7,6 @@ Trigger a game server update (e.g., pull latest game build/mods depending on bac
 - Returns: 200 OK
 - Backend behavior: Triggers an update; requires the server to be OFFLINE. The node performs the update asynchronously.
 
-## Responses
-- 200 OK: Update requested.
-- 403 Forbidden: `missingPermission.MANAGE_SERVERS` — you lack the permission to manage servers in this team.
-- 404 Not Found: `general.not_found` — server not found or not in your team.
-- 409 Conflict: `server.is_not_offline` — update requires OFFLINE.
-- 409 Conflict: `server.server_directory_change_in_progress` — a server directory change task is running on this server.
-
 === "Java"
 
     ```java
@@ -38,3 +31,10 @@ Trigger a game server update (e.g., pull latest game build/mods depending on bac
     curl -X POST -H "Application-Token: $GMC_APP_TOKEN" \
       https://api.gamemanager.cloud/server/srv-123/update
     ```
+
+## Responses
+- 200 OK: Update requested.
+- 403 Forbidden: `missingPermission.MANAGE_SERVERS` — you lack the permission to manage servers in this team.
+- 404 Not Found: `general.not_found` — server not found or not in your team.
+- 409 Conflict: `server.is_not_offline` — update requires OFFLINE.
+- 409 Conflict: `server.server_directory_change_in_progress` — a server directory change task is running on this server.

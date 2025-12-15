@@ -8,13 +8,7 @@ Send an RCON command to a running server.
 - Returns: 200 OK (output is delivered via RCON response events)
 - Backend behavior: Requires the server to be ONLINE and RCON configured.
 
-## Responses
-- 200 OK: RCON command sent.
-- 403 Forbidden: `missingPermission.MANAGE_SERVERS` — you lack the permission to manage servers in this team.
-- 404 Not Found: `general.not_found` — server not found or not in your team.
-- 400 Bad Request: `validation.failed` — invalid command (blank or too long).
-- 409 Conflict: `server.is_not_online` — RCON requires ONLINE.
-- 409 Conflict: `server.server_directory_change_in_progress` — a server directory change task is running on this server.
+
 
 === "Java"
 
@@ -42,3 +36,11 @@ Send an RCON command to a running server.
       -d '{"command":"status"}' \
       https://api.gamemanager.cloud/server/srv-123/rcon
     ```
+
+## Responses
+- 200 OK: RCON command sent.
+- 403 Forbidden: `missingPermission.MANAGE_SERVERS` — you lack the permission to manage servers in this team.
+- 404 Not Found: `general.not_found` — server not found or not in your team.
+- 400 Bad Request: `validation.failed` — invalid command (blank or too long).
+- 409 Conflict: `server.is_not_online` — RCON requires ONLINE.
+- 409 Conflict: `server.server_directory_change_in_progress` — a server directory change task is running on this server.
