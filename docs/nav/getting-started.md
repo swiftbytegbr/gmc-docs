@@ -23,18 +23,10 @@ You can rotate or revoke keys in Team Settings.
 ## Installation (WIP)
 Note: Packages are not yet published to Maven Central, npm, or PyPI.
 
-- Java (WIP): Will be published under `de.swiftbyte.gmc:gmc-java-sdk`.
-- JavaScript (WIP): Will be published as `@swiftbyte/gmc-sdk`.
-- Python (WIP): Will be published as `gmc-sdk`.
-
-Until then, build from source in the sibling repos:
-- `../gmc-java-sdk`
-- `../gmc-js-sdk`
-- `../gmc-python-sdk`
 
 ## First Call
 
-> Tip: Use the language tabs to switch code examples. Your selection persists across pages (enabled via `content.tabs.link`).
+> Tip: Use the language tabs to switch code examples. Your selection persists across pages.
 
 === "Java"
 
