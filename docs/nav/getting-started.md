@@ -36,7 +36,7 @@ Until then, build from source in the sibling repos:
 
 > Tip: Use the language tabs to switch code examples. Your selection persists across pages (enabled via `content.tabs.link`).
 
-=== "Java (default)"
+=== "Java"
 
     ```java
     GmcClient gmc = GmcClient.builder()

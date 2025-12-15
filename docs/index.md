@@ -16,7 +16,7 @@ You will find step‑by‑step explanations for every feature area (Nodes, Serve
 
 Where it adds clarity, we include guidance on sequencing operations (for example: creating a server, then backing it up, then rolling it back) and how the system reacts to errors or conflicts.
 
-## About Game Manager Cloud (product)
+## About Game Manager Cloud
 Game Manager Cloud is built to operate self‑hosted, dedicated game servers at scale. It manages nodes (machines), game server processes, configuration, backups and automations. The web application is the canonical user interface, and the API/SDKs provide the same capabilities for developers who want to extend or automate the platform.
 
 Learn more about the product at https://gamemanager.cloud.
@@ -29,12 +29,3 @@ Learn more about the product at https://gamemanager.cloud.
 
 ## Choosing between REST and an SDK
 If you want the most direct control, have an existing HTTP client stack, or are integrating from a language without an SDK, use the REST documentation and examples. If you want faster iterations, typed models and built‑in error mapping, use an SDK. You can mix both approaches if needed.
-
-## Quick links
-See these pages to get productive quickly:
-
-- Getting Started: `nav/getting-started.md` — requirements, keys, first request
-- Authentication: `nav/authentication.md` — headers, base URLs, team scoping
-- Java Client (default): `nav/clients/java.md` — idiomatic usage and async
-- REST API: `nav/rest.md` — conventions, errors, pagination
-
