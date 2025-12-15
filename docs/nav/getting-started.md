@@ -81,8 +81,3 @@ Note: Packages are not yet published to Maven Central, npm, or PyPI.
       -H "Application-Secret: <APP_SECRET>" \
       https://api.gamemanager.cloud/team/my | jq
     ```
-
-## What’s Next
-- Understand authentication details: `nav/authentication.md`
-- Explore Java client usage: `nav/clients/java.md`
-- Learn REST conventions, errors, and pagination: `nav/rest.md`
