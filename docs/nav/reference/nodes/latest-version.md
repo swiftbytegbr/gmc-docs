@@ -30,3 +30,6 @@ Get the latest available node version string.
     ```bash
     curl -s https://api.gamemanager.cloud/node/latest-version
     ```
+
+## Responses
+- 200 OK: Version string returned as plain text.

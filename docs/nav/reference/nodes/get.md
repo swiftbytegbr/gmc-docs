@@ -50,3 +50,8 @@ Example:
   "systemData": {}
 }
 ```
+
+## Responses
+- 200 OK: Node returned.
+- 403 Forbidden: `missingPermission.ACCESS_NODES` — you lack read access in this team.
+- 404 Not Found: `general.not_found` — node not found or not in your team.

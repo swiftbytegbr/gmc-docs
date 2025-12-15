@@ -4,7 +4,7 @@ Trigger a node self-update. Typically pulls and applies the latest node software
 
 - Method: POST
 - Path (REST): `/node/{nodeId}/update`
-- Returns: 200 OK
+- Returns: 202 Accepted
 - Backend behavior: Enqueues an update task on the node. Idempotent; repeated calls re-trigger check.
 
 === "Java"
@@ -32,3 +32,8 @@ Trigger a node self-update. Typically pulls and applies the latest node software
       -H "Application-Id: $GMC_APP_ID" -H "Application-Secret: $GMC_APP_SECRET" \
       https://api.gamemanager.cloud/node/node-123/update
     ```
+
+## Responses
+- 202 Accepted: Update requested.
+- 403 Forbidden: `missingPermission.MANAGE_NODES` — you lack permission to manage nodes in this team.
+- 404 Not Found: `general.not_found` — node or team not found.

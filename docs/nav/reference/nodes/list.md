@@ -34,3 +34,9 @@ Lists all nodes accessible to your team. The SDKs automatically resolve your `te
       -H "Application-Secret: $GMC_APP_SECRET" \
       https://api.gamemanager.cloud/node/by-team/$TEAM_ID
     ```
+
+## Responses
+- 200 OK: List of nodes.
+- 403 Forbidden: `missingPermission.ACCESS_NODES` — you lack read access in this team.
+- 404 Not Found: `general.not_found` — team not found.
+- 400 Bad Request: `validation.failed` — invalid `teamId` format.

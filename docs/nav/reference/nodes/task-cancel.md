@@ -4,8 +4,8 @@ Cancel a cancellable task on a node.
 
 - Method: POST
 - Path (REST): `/node/{nodeId}/task/{taskId}/cancel`
-- Returns: 200 OK
-- Backend behavior: If task is not cancellable or already finished, backend returns 400/409.
+- Returns: 202 Accepted
+- Backend behavior: Requests cancellation for a cancellable task. If the task is not cancellable or already terminal, returns a conflict.
 
 === "Java"
 
@@ -31,3 +31,10 @@ Cancel a cancellable task on a node.
     curl -X POST -H "Application-Token: $GMC_APP_TOKEN" \
       https://api.gamemanager.cloud/node/node-123/task/task-1/cancel
     ```
+
+## Responses
+- 202 Accepted: Cancellation requested.
+- 403 Forbidden: `missingPermission.MANAGE_NODES` — you lack permission to manage nodes in this team.
+- 404 Not Found: `general.not_found` — task or node not found.
+- 409 Conflict: `node.task_not_cancelable` — task cannot be canceled.
+- 400 Bad Request: `validation.failed` — invalid `nodeId` or `taskId` format.
