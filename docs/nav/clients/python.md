@@ -22,19 +22,19 @@ client.node_client.update_node('node-123')
 
 ### Servers
 ```python
-servers = client.server_client.get_game_servers()
-srv = client.server_client.get_game_server('srv-123')
+servers = gmc.server_client.get_game_servers()
+srv = gmc.server_client.get_game_server('srv-123')
 
-client.server_client.start_server('srv-123')
-client.server_client.restart_server('srv-123')
-client.server_client.stop_server('srv-123')
+gmc.server_client.start_server('srv-123')
+gmc.server_client.restart_server('srv-123')
+gmc.server_client.stop_server('srv-123')
 
-created = client.server_client.create_server('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2')
+created = gmc.server_client.create_server('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2')
 
-client.server_client.backup_server('srv-123', 'pre-update')
-client.server_client.delete_backup('srv-123', 'backup-1')
-client.server_client.reset_settings('srv-123')
-client.server_client.rcon_command('srv-123', 'status')
+gmc.server_client.backup_server('srv-123', 'pre-update')
+gmc.server_client.delete_backup('srv-123', 'backup-1')
+gmc.server_client.reset_settings('srv-123')
+gmc.server_client.rcon_command('srv-123', 'status')
 ```
 
 ### Teams
@@ -69,7 +69,7 @@ Errors raise `GmcApiException` (HTTP error with status and key) or `GmcClientExc
 from gmc_sdk.exceptions import GmcApiException, GmcClientException
 
 try:
-    client.server_client.start_server('srv-404')
+    gmc.server_client.start_server('srv-404')
 except (GmcApiException, GmcClientException) as e:
     print(e)
 ```

@@ -5,7 +5,7 @@ Fetch a single server by ID.
 - Method: GET
 - Path (REST): `/server/{serverId}`
 - Returns: GameServer
-- Backend behavior: 404 if not within your team.
+- Backend behavior: Returns an enriched server view (ports, IPs, limits). Requires access to the team.
 
 === "Java"
 
@@ -16,13 +16,13 @@ Fetch a single server by ID.
 === "JavaScript"
 
     ```ts
-    const srv = await client.serverClient.getGameServer('srv-123');
+    const srv = await gmc.serverClient.getGameServer('srv-123');
     ```
 
 === "Python"
 
     ```python
-    srv = client.server_client.get_game_server('srv-123')
+    srv = gmc.server_client.get_game_server('srv-123')
     ```
 
 === "REST"
@@ -56,3 +56,10 @@ Example:
   "rconPort": 27017
 }
 ```
+
+## Responses
+- 200 OK: Server returned.
+- 403 Forbidden: `missingPermission.ACCESS_SERVERS` — you lack read access in this team.
+- 404 Not Found: `general.not_found` — server/node/team not found.
+- 400 Bad Request: `server.unsupported_game_type` — unknown or unsupported game type for this server.
+- 500 Internal Server Error: `server.dto_mapping_profile_not_found` — server’s setting profile is missing.

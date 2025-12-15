@@ -9,7 +9,7 @@ All API methods return `GmcAction<T>`.
 - Asynchronous: `action.queue(onSuccess, onError);` (non-blocking)
 
 ```java
-client.serverClient().getGameServers().queue(
+gmc.serverClient().getGameServers().queue(
   servers -> System.out.println("Servers: " + servers.size()),
   error -> error.printStackTrace()
 );
@@ -23,7 +23,7 @@ All methods return Promises. Use `await` or `.then()`.
 ```ts
 const [nodes, servers] = await Promise.all([
   client.nodeClient.getNodes(),
-  client.serverClient.getGameServers(),
+  gmc.serverClient.getGameServers(),
 ]);
 ```
 

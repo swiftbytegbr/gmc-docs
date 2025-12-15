@@ -4,9 +4,9 @@ Upload or replace the team's icon using multipart/form-data.
 
 - Method: POST
 - Path (REST): `/team/{teamId}/icon`
-- Body: multipart field `file=@icon.png`
+- Body: multipart field `icon=@icon.png`
 - Returns: 200 OK
-- Backend behavior: Replaces the current icon; image is stored and served from CDN or image endpoint.
+- Backend behavior: Replaces the current icon; image is stored and served from the image endpoint (`/images/{imageId}`).
 
 === "Java"
 
@@ -22,7 +22,7 @@ Upload or replace the team's icon using multipart/form-data.
     import FormData from 'form-data';
     import fs from 'fs';
     const form = new FormData();
-    form.append('file', fs.createReadStream('icon.png'));
+    form.append('icon', fs.createReadStream('icon.png'));
     await client.teamClient.uploadIcon(form);
     ```
 
@@ -37,6 +37,6 @@ Upload or replace the team's icon using multipart/form-data.
 
     ```bash
     curl -X POST -H "Application-Token: $GMC_APP_TOKEN" \
-      -F file=@icon.png \
+      -F icon=@icon.png \
       https://api.gamemanager.cloud/team/$TEAM_ID/icon
     ```

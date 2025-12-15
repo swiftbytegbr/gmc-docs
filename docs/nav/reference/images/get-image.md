@@ -5,6 +5,11 @@ Fetch raw bytes of an image asset by ID.
 - Method: GET
 - Path (REST): `/images/{imageId}`
 - Returns: image bytes (binary)
+- Response headers:
+  - `Content-Type`: detected from file signature (png, jpeg, gif, webp; otherwise `application/octet-stream`)
+  - `Cache-Control`: `public, max-age=2592000, immutable`
+  - `Last-Modified`: creation timestamp
+  - `Content-Disposition`: `inline; filename="{imageId}.{ext}"`
 
 === "Java"
 

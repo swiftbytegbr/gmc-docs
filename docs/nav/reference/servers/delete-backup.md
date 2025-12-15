@@ -6,7 +6,16 @@ Delete a specific backup by its ID.
 - Path (REST): `/server/{serverId}/delete-backup`
 - Body: `{ "backupId": "<id>" }`
 - Returns: 200 OK
-- Backend behavior: Removes backup metadata and data.
+- Backend behavior: Removes backup metadata and data on the node.
+
+## Responses
+- 200 OK: Backup deletion requested.
+- 403 Forbidden: `missingPermission.MANAGE_SERVERS` — you lack the permission to manage servers in this team.
+- 404 Not Found: `general.not_found` — server or backup not found.
+- 409 Conflict: `server.state_unknown` — the server is in an unknown state.
+- 409 Conflict: `server.backups_empty` — no backups available for this server.
+- 409 Conflict: `server.server_directory_change_in_progress` — a server directory change task is running on this server.
+- 409 Conflict: `server.backup_directory_change_in_progress` — the node is currently changing the backups directory.
 
 === "Java"
 
@@ -17,13 +26,13 @@ Delete a specific backup by its ID.
 === "JavaScript"
 
     ```ts
-    await client.serverClient.deleteBackup('srv-123', 'backup-1');
+    await gmc.serverClient.deleteBackup('srv-123', 'backup-1');
     ```
 
 === "Python"
 
     ```python
-    client.server_client.delete_backup('srv-123', 'backup-1')
+    gmc.server_client.delete_backup('srv-123', 'backup-1')
     ```
 
 === "REST"

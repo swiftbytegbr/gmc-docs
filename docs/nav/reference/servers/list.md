@@ -7,6 +7,11 @@ List all servers for your team.
 - Returns: Array of GameServer
 - Backend behavior: Team-scoped; read-only.
 
+## Responses
+- 200 OK: List of servers.
+- 403 Forbidden: `missingPermission.ACCESS_SERVERS` — you lack read access in this team.
+- 404 Not Found: `general.not_found` — team not found.
+
 === "Java"
 
     ```java
@@ -16,13 +21,13 @@ List all servers for your team.
 === "JavaScript"
 
     ```ts
-    const servers = await client.serverClient.getGameServers();
+    const servers = await gmc.serverClient.getGameServers();
     ```
 
 === "Python"
 
     ```python
-    servers = client.server_client.get_game_servers()
+    servers = gmc.server_client.get_game_servers()
     ```
 
 === "REST"

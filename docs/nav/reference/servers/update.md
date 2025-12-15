@@ -5,24 +5,31 @@ Trigger a game server update (e.g., pull latest game build/mods depending on bac
 - Method: POST
 - Path (REST): `/server/{serverId}/update`
 - Returns: 200 OK
-- Backend behavior: Triggers an update; the server may be stopped during update.
+- Backend behavior: Triggers an update; requires the server to be OFFLINE. The node performs the update asynchronously.
+
+## Responses
+- 200 OK: Update requested.
+- 403 Forbidden: `missingPermission.MANAGE_SERVERS` — you lack the permission to manage servers in this team.
+- 404 Not Found: `general.not_found` — server not found or not in your team.
+- 409 Conflict: `server.is_not_offline` — update requires OFFLINE.
+- 409 Conflict: `server.server_directory_change_in_progress` — a server directory change task is running on this server.
 
 === "Java"
 
     ```java
-    client.serverClient().updateServer("srv-123").execute();
+    gmc.serverClient().updateServer("srv-123").execute();
     ```
 
 === "JavaScript"
 
     ```ts
-    await client.serverClient.updateServer('srv-123');
+    await gmc.serverClient.updateServer('srv-123');
     ```
 
 === "Python"
 
     ```python
-    client.server_client.update_server('srv-123')
+    gmc.server_client.update_server('srv-123')
     ```
 
 === "REST"

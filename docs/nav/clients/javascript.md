@@ -26,19 +26,19 @@ await client.nodeClient.updateNode('node-123');
 
 ### Servers
 ```ts
-const servers = await client.serverClient.getGameServers();
-const srv = await client.serverClient.getGameServer('srv-123');
+const servers = await gmc.serverClient.getGameServers();
+const srv = await gmc.serverClient.getGameServer('srv-123');
 
-await client.serverClient.startServer('srv-123');
-await client.serverClient.restartServer('srv-123');
-await client.serverClient.stopServer('srv-123');
+await gmc.serverClient.startServer('srv-123');
+await gmc.serverClient.restartServer('srv-123');
+await gmc.serverClient.stopServer('srv-123');
 
-const created = await client.serverClient.createServer('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2');
+const created = await gmc.serverClient.createServer('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2');
 
-await client.serverClient.backupServer('srv-123', 'pre-update');
-await client.serverClient.deleteBackup('srv-123', 'backup-1');
-await client.serverClient.resetSettings('srv-123');
-await client.serverClient.rconCommand('srv-123', 'status');
+await gmc.serverClient.backupServer('srv-123', 'pre-update');
+await gmc.serverClient.deleteBackup('srv-123', 'backup-1');
+await gmc.serverClient.resetSettings('srv-123');
+await gmc.serverClient.rconCommand('srv-123', 'status');
 ```
 
 ### Teams
@@ -71,7 +71,7 @@ Errors throw `GmcApiException` (HTTP error with status and key) or `GmcClientExc
 
 ```ts
 try {
-  await client.serverClient.startServer('srv-404');
+  await gmc.serverClient.startServer('srv-404');
 } catch (e) {
   console.error(e);
 }
@@ -82,7 +82,7 @@ Use `Promise.all` for parallel calls:
 ```ts
 const [nodes, servers] = await Promise.all([
   client.nodeClient.getNodes(),
-  client.serverClient.getGameServers(),
+  gmc.serverClient.getGameServers(),
 ]);
 ```
 

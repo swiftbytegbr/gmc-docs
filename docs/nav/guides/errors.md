@@ -16,7 +16,7 @@ GMC returns structured errors with an error key and message. SDKs map these to e
 
 ```java
 try {
-  client.serverClient().startServer("srv-404").execute();
+  gmc.serverClient().startServer("srv-404").execute();
 } catch (GmcException e) {
   System.err.println(e.getMessage());
 }
@@ -28,7 +28,7 @@ try {
 
 ```ts
 try {
-  await client.serverClient.startServer('srv-404');
+  await gmc.serverClient.startServer('srv-404');
 } catch (e) {
   console.error(e);
 }
@@ -40,7 +40,7 @@ try {
 
 ```python
 try:
-    client.server_client.start_server('srv-404')
+    gmc.server_client.start_server('srv-404')
 except Exception as e:
     print(e)
 ```

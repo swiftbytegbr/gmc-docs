@@ -14,12 +14,38 @@ Example:
   "id": "team-1",
   "name": "Dev Guild",
   "iconBase64": null,
-  "owner": { "id": "u1", "name": "Alice", "email": "alice@example.com", "permissions": ["ALL"] },
+  "iconImageId": "img-abc123",
+  "owner": {
+    "id": "u1",
+    "name": "Alice",
+    "email": "alice@example.com",
+    "iconBase64": null,
+    "imageId": "img-owner1",
+    "permissions": ["ALL"],
+    "twoFAEnabled": true
+  },
   "members": [],
   "applications": { "app-1": ["MANAGE_SERVERS", "ACCESS_SERVERS"] },
-  "invitedMembers": ["bob@example.com"],
+  "invitedMembers": [
+    {
+      "id": "u2",
+      "name": "Bob",
+      "email": "bob@example.com",
+      "iconBase64": null,
+      "imageId": "img-invite1",
+      "invitedAt": "2025-12-01T10:15:30Z",
+      "expired": false
+    }
+  ],
   "inviteCode": "ABCD1234",
-  "actionLog": []
+  "limits": {
+    "maxNodes": 5,
+    "maxServers": 10,
+    "maxBackups": 20,
+    "maxRconCommands": 1000,
+    "maxStatisticsSize": 100,
+    "maxMembers": 10
+  }
 }
 ```
 

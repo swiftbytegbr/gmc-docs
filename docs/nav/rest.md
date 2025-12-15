@@ -57,7 +57,7 @@ curl -X POST \
 # Upload icon
 curl -X POST \
   -H "Application-Token: $GMC_APP_TOKEN" \
-  -F file=@icon.png \
+  -F icon=@icon.png \
   https://api.gamemanager.cloud/team/$TEAM_ID/icon
 ```
 
@@ -70,7 +70,7 @@ curl -X POST \
 
 ### Info & Images & Settings
 - Version info: `GET /info/version`
-- Download image bytes: `GET /image/{imageId}`
+- Download image bytes: `GET /images/{imageId}`
 - Update setting profiles: endpoints under `/setting-profile/...`
 
 ## Errors
@@ -91,4 +91,3 @@ Errors include:
 List endpoints may support pagination:
 - Query: `?page=0&size=25`
 - Response shape: `{ "content": [ ... ], "page": { ... } }` (Page<T>)
-

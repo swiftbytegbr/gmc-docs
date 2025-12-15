@@ -26,16 +26,16 @@ gmc.serverClient().changeDisplayName("srv-123", "Public #1").execute();
 
 ## JavaScript
 ```ts
-const servers = await client.serverClient.getGameServers();
-await client.serverClient.startServer('srv-123');
-const created = await client.serverClient.createServer('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2');
+const servers = await gmc.serverClient.getGameServers();
+await gmc.serverClient.startServer('srv-123');
+const created = await gmc.serverClient.createServer('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2');
 ```
 
 ## Python
 ```python
-servers = client.server_client.get_game_servers()
-client.server_client.start_server('srv-123')
-created = client.server_client.create_server('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2')
+servers = gmc.server_client.get_game_servers()
+gmc.server_client.start_server('srv-123')
+created = gmc.server_client.create_server('node-123', 'My Server', 'CS2', 'de_dust2', '/servers/cs2')
 ```
 
 ## REST

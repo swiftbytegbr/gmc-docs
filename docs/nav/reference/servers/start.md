@@ -5,7 +5,16 @@ Start a stopped server.
 - Method: POST
 - Path (REST): `/server/{serverId}/start`
 - Returns: 200 OK
-- Backend behavior: Starts the server if stopped. 409 if already running or busy.
+- Backend behavior: Starts the server if the server is OFFLINE. The request returns immediately; the process continues asynchronously.
+
+## Responses
+- 200 OK: Server start requested.
+- 403 Forbidden: `missingPermission.MANAGE_SERVERS` — you lack the permission to manage servers in this team.
+- 404 Not Found: `general.not_found` — server not found or not in your team.
+- 409 Conflict: `server.is_not_offline` — the server must be OFFLINE to start.
+- 409 Conflict: `server.server_directory_change_in_progress` — a server directory change task is running on this server.
+
+Note that this request completes immediately and does not wait for the server to be fully started.
 
 === "Java"
 
@@ -16,13 +25,13 @@ Start a stopped server.
 === "JavaScript"
 
     ```ts
-    await client.serverClient.startServer('srv-123');
+    await gmc.serverClient.startServer('srv-123');
     ```
 
 === "Python"
 
     ```python
-    client.server_client.start_server('srv-123')
+    gmc.server_client.start_server('srv-123')
     ```
 
 === "REST"

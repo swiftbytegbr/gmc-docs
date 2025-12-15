@@ -5,7 +5,12 @@ Fetch live or cached server statistics. Note: Path includes nodeId per current A
 - Method: GET
 - Path (REST): `/{nodeId}/{serverId}/statistics`
 - Returns: GameServerStatistic
-- Backend behavior: Hits the node agent; may be cached briefly. Requires server to be reachable.
+- Backend behavior: Hits the node agent; may be cached briefly. Requires team access.
+
+## Responses
+- 200 OK: Statistics returned.
+- 403 Forbidden: `missingPermission.ACCESS_SERVERS` — you lack read access in this team.
+- 400 Bad Request: `server.statics_not_found` — no statistics available for this server (alias: `server.statistics_not_found`).
 
 === "Java"
 
@@ -16,13 +21,13 @@ Fetch live or cached server statistics. Note: Path includes nodeId per current A
 === "JavaScript"
 
     ```ts
-    const stats = await client.serverClient.getStatistics('node-123', 'srv-123');
+    const stats = await gmc.serverClient.getStatistics('node-123', 'srv-123');
     ```
 
 === "Python"
 
     ```python
-    stats = client.server_client.get_statistics('node-123', 'srv-123')
+    stats = gmc.server_client.get_statistics('node-123', 'srv-123')
     ```
 
 === "REST"

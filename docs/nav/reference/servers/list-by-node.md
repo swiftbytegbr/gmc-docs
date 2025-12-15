@@ -7,6 +7,11 @@ List all servers hosted on a specific node.
 - Returns: Array of GameServer
 - Backend behavior: Read-only. Only servers your team owns are returned.
 
+## Responses
+- 200 OK: List of servers on the node.
+- 403 Forbidden: `missingPermission.ACCESS_SERVERS` — you lack read access for the node’s team.
+- 404 Not Found: `general.not_found` — node not found.
+
 === "Java"
 
     ```java
@@ -16,13 +21,13 @@ List all servers hosted on a specific node.
 === "JavaScript"
 
     ```ts
-    const servers = await client.serverClient.getGameServersByNode('node-123');
+    const servers = await gmc.serverClient.getGameServersByNode('node-123');
     ```
 
 === "Python"
 
     ```python
-    servers = client.server_client.get_game_servers_by_node('node-123')
+    servers = gmc.server_client.get_game_servers_by_node('node-123')
     ```
 
 === "REST"
