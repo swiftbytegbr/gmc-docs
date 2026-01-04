@@ -43,6 +43,8 @@ nav:
       - Delete Server: nav/reference/servers/delete.md
       - Rollback Server: nav/reference/servers/rollback.md
       - RCON Command: nav/reference/servers/rcon.md
+      - RCON Command (await): nav/reference/servers/rcon-await.md
+      - Wipe Savegames: nav/reference/servers/wipe-savegames.md
       - Create Server: nav/reference/servers/create.md
       - Change Directory: nav/reference/servers/change-directory.md
       - Change Display Name: nav/reference/servers/change-display-name.md
@@ -59,6 +61,8 @@ nav:
       - Get Notifications: nav/reference/teams/notifications.md
       - Unread Notification Count: nav/reference/teams/unread-count.md
   - Automations:
+      - Guide: nav/guides/automations.md
+      - Expression Language (AEL): nav/guides/automation-expressions.md
       - List Automations: nav/reference/automations/list.md
       - Get Automation: nav/reference/automations/get.md
       - Create Automation: nav/reference/automations/create.md
