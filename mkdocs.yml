@@ -63,6 +63,8 @@ nav:
   - Automations:
       - Guide: nav/guides/automations.md
       - Expression Language (AEL): nav/guides/automation-expressions.md
+      - AEL Cheatsheet: nav/guides/automation-expressions-cheatsheet.md
+      - AEL Examples: nav/guides/automation-expressions-examples.md
       - List Automations: nav/reference/automations/list.md
       - Get Automation: nav/reference/automations/get.md
       - Create Automation: nav/reference/automations/create.md

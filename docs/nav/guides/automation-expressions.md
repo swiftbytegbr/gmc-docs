@@ -1,143 +1,263 @@
 Title: Automation Expression Language (AEL)
 
-What is AEL?
-- AEL is a typed, property‑first expression language used inside automation templates (Notify, Discord webhook, and future messaging steps).
-- It is built on Spring Expression Language (SpEL) and exposes a curated, safe set of properties and functions.
-- Goal: make templates easy to write for humans, and easy to auto‑complete for tools.
+What Is AEL?
+- AEL is the mini-language you use inside curly braces `{ ... }` to personalize automation steps. It lets you pull in data about the automation, its current run and step, the selected targets, and outputs captured from RCON.
+- It’s designed for real users first: readable, forgiving with nulls, and focused on the properties you actually need. Under the hood it uses a safe subset of SpEL.
 
-How to write expressions
-- Embed expressions inside strings using `#{ ... }`.
-  - Example: `Hello #{automation.name}!`
-- Legacy `{ ... }` placeholders are accepted and auto‑converted to `#{ ... }` at render time.
-- Property‑first rule: use properties for data (`targets.names`, not `targets.names()`), functions only when arguments are required.
+Who Should Read This
+- New users learning how to write Notify/Discord/RCON templates.
+- Power users wanting the full catalog of variables and functions.
+- Developers integrating editors or doing validation/autocomplete.
 
-Quick examples
-- `Targets: #{targets.count}`
-- `First name: #{targets.names[0]}`
-- `Succeeded: #{targets.succeededIds.size()}`
-- `Failed: #{join(targets.failedNames, ', ')}`
-- `RCON: #{outputs.rcon('ping').byId(targets.ids.get(0)).response}`
-- `All RCON: #{join(outputs.rcon('ping').responses, '; ')}`
+At A Glance
+- Write `{automation.name}`, `{targets.count}`, `{step.indexHuman}`, `{join(targets.names, ', ')}` directly in any “Template supported” field.
+- If a value is missing/null, it renders as empty. Provide fallbacks with `{value ?: 'n/a'}`.
+- Only the documented variables and functions here are available (no arbitrary class/method access).
 
-Grammar & operators (SpEL subset)
-- Literals: strings ('text' or "text"), numbers (42, 3.14), booleans (true/false), null.
-- Arithmetic: `+ - * / %` with usual precedence.
-- Comparison: `< <= > >= == !=` (numbers and strings).
-- Boolean: `and`, `or`, `not`.
-- Conditional: ternary `cond ? a : b`, Elvis `a ?: b`.
-- Safe navigation: `obj?.prop` (yields null when `obj` is null).
+---
+
+Quick Start (3 minutes)
+1) Say hello
+```
+Hello {automation.name}! We are on step {step.indexHuman}/{run.workflowSize}.
+```
+2) List targets
+```
+Targets ({targets.count}): {join(targets.names, ', ')}
+```
+3) Show results
+```
+OK: {targets.succeededIds.size()} — {join(targets.succeededNames, ', ')}
+KO: {targets.failedIds.size()} — {join(targets.failedNames, ', ')}
+```
+
+Tip: Use a small manual run to preview your template safely before rolling it out broadly.
+
+---
+
+Where You Can Use AEL
+- Notify step: title, message
+- Discord Webhook step: content and all embed text fields
+- RCON Command step: command (and later consume captured output)
+- Stop step: message
+- Backup step: backupName
+- Setting Sync step: string values in key sets
+
+Note: Timed/State waits and start/restart/update are numeric or enum inputs; templates typically aren’t used there.
+
+---
+
+Concepts You’ll Use
+- Property‑first access: use properties, not method calls. Example: `{targets.names}`, not `targets.names()`.
+- Null‑safe rendering: null inside text becomes empty. Use defaults with the Elvis operator: `{maybe ?: 'n/a'}`.
+- Collections: filter with `.?[cond]`, transform with `.![expr]`, index with `[i]`, get size with `.size()`.
+- Safe navigation: `obj?.prop` yields null if `obj` is null.
+
+---
+
+Syntax and Operators (with examples)
+- Literals: `'text'`, `"text"`, `42`, `3.14`, `true`, `false`, `null`.
+- Math: `{1 + 2}`, `{5 % 2}`
+- Compare: `{targets.count > 5}`
+- Boolean: `{targets.count > 0 and run.workflowSize >= 1}`
+- Conditional: `{targets.count > 0 ? 'has targets' : 'none'}`
+- Elvis default: `{backupName ?: 'unnamed'}`
+- Safe navigation: `{outputs?.rcon('cap')?.byId(targets.ids[0])?.response}`
 - Collections:
-  - Size: `list.size()`
-  - Index: `list[0]`, `list[list.size()-1]`
-  - Projection: `list.![upper(#this)]` (transform items)
-  - Selection: `list.?[#this != null]` (filter)
+  - Size: `{targets.names.size()}`
+  - Index: `{targets.names[0]}`
+  - Filter: `{join(targets.names.?[#this.startsWith('EU-')], ', ')}`
+  - Map: `{join(targets.names.![upper(#this)], ', ')}`
 
-Root model (autocomplete spec)
-- Top‑level properties:
-  - `automation: Automation`
-  - `run: AutomationRun`
-  - `step: StepView`
-  - `targets: TargetsView`
-  - `outputs: OutputsView`
-  - Convenience: `teamName: String`, `nowIso: String`, `epoch: long`, `date: String`, `timeHms: String`
+---
 
-Type: Automation
-- `id: String`, `teamId: String`, `name: String`, `description: String`, `enabled: boolean`
-- `createdAt: Instant`, `updatedAt: Instant`
+Complete Variable Catalog
 
-Type: AutomationRun
-- `id: String`, `automationId: String`, `teamId: String`, `status: enum`
-- `createdAt: Instant`, `startedAt: Instant`, `finishedAt: Instant`, `workflowSize: int`
+Convenience values
+| Path | Type | Description |
+| --- | --- | --- |
+| `teamName` | String | Team display name |
+| `nowIso` | String | Current time ISO‑8601 (UTC) |
+| `epoch` | long | Current epoch seconds |
+| `date` | String | UTC date `yyyy‑MM‑dd` |
+| `timeHms` | String | UTC time `HH:mm:ss` |
 
-Type: StepView
-- `index: Integer` (0‑based)
-- `indexHuman: String` (1‑based for display)
-- `type: enum`
-- `startedAt: Instant`, `finishedAt: Instant`
+Automation
+| Path | Type | Description |
+| --- | --- | --- |
+| `automation.id` | String | Automation ID |
+| `automation.teamId` | String | Team ID |
+| `automation.name` | String | Name |
+| `automation.description` | String | Description |
+| `automation.enabled` | boolean | Enabled flag |
+| `automation.createdAt` | Instant | Creation time |
+| `automation.updatedAt` | Instant | Last update time |
 
-Type: TargetsView
-- `count: int`
-- Ordered lists (stable):
-  - `ids: List<String>` — all target IDs
-  - `names: List<String>` — display names aligned to `ids`
-  - `activeIds`, `activeNames` — currently active for this step
-  - `succeededIds`, `succeededNames` — marked SUCCEEDED for this step
-  - `failedIds`, `failedNames` — marked FAILED (or globally skipped) for this step
-- Lookup: `nameById(id: String): String | null`
+Run
+| Path | Type | Description |
+| --- | --- | --- |
+| `run.id` | String | Run ID |
+| `run.automationId` | String | Owning automation |
+| `run.teamId` | String | Team ID |
+| `run.status` | enum | `QUEUED|PENDING|RUNNING|SUCCEEDED|FAILED|CANCELED|TIMEOUTED` |
+| `run.createdAt` | Instant | Created |
+| `run.startedAt` | Instant | Started (nullable) |
+| `run.finishedAt` | Instant | Finished (nullable) |
+| `run.workflowSize` | int | Number of steps |
 
-Type: OutputsView
-- `rcon(name: String): RconSet` — access captured RCON results stored under the given capture name (from the RCON step’s `var`).
+Step
+| Path | Type | Description |
+| --- | --- | --- |
+| `step.index` | Integer | 0‑based index of current step |
+| `step.indexHuman` | String | 1‑based for display |
+| `step.type` | enum | Current step type |
+| `step.startedAt` | Instant | Step start time (nullable) |
+| `step.finishedAt` | Instant | Step end time (nullable) |
 
-Type: RconSet
-- `byId(serverId: String): RconEntry`
-- `responses: List<String>` — all captured response strings for this capture
+Targets
+| Path | Type | Description |
+| --- | --- | --- |
+| `targets.count` | int | Total targets in this run |
+| `targets.ids` | List<String> | All target IDs (stable order) |
+| `targets.names` | List<String> | Display names aligned to `ids` |
+| `targets.activeIds` | List<String> | Still active for current step |
+| `targets.activeNames` | List<String> | Names aligned to `activeIds` |
+| `targets.succeededIds` | List<String> | Marked SUCCEEDED for current step |
+| `targets.succeededNames` | List<String> | Names aligned to `succeededIds` |
+| `targets.failedIds` | List<String> | FAILED for this step or globally skipped |
+| `targets.failedNames` | List<String> | Names aligned to `failedIds` |
+| `targets.nameById(id)` | String|null | Lookup display name by server ID |
 
-Type: RconEntry
-- `response: String | null` — response for this specific target
-- `present: boolean` — true if a response exists
+Outputs (RCON)
+| Path | Type | Description |
+| --- | --- | --- |
+| `outputs.rcon(name)` | RconSet | Access captured responses by capture name |
+| `outputs.rcon(name).responses` | List<String> | All responses for that capture |
+| `outputs.rcon(name).byId(serverId)` | RconEntry | Entry for a specific target |
+| `...byId(...).response` | String|null | Captured response for that target |
+| `...byId(...).present` | boolean | True if a response exists |
 
-Global functions (signatures & usage)
-- Strings
-  - `upper(s: String): String` — `#{upper(automation.name)}`
-  - `lower(s: String): String` — `#{lower(teamName)}`
-  - `trim(s: String): String` — `#{trim('  hello  ')}`
-  - `join(items: Collection<any>, sep: String): String` — `#{join(targets.names, ', ')}`
-- Time
-  - `formatDate(epochSeconds: long, pattern: String, zone: String): String`
-    - `#{formatDate(epoch, 'yyyy-MM-dd HH:mm', 'UTC')}`
-- Math (double)
-  - `min(a: double, b: double)`, `max(a: double, b: double)`, `sum(a: double, b: double)`, `avg(a: double, b: double)`
+Notes
+- Lists are aligned by index (e.g., `ids[i]` ↔ `names[i]`). Ordering is stable across the step.
+- Nulls render empty inside strings. Use `{something ?: 'n/a'}` for a default.
 
-Safety and constraints
-- Type/class references (SpEL `T(...)`) are not exposed.
-- Only documented properties and functions are available.
-- Null rendering: a null value inside `#{...}` renders as an empty string in the final output.
+---
 
-Authoring patterns (recipes)
-- List formatting
-  - `Names: #{join(targets.names, ', ')}`
-  - `Succeeded (#{targets.succeededIds.size()}): #{join(targets.succeededNames, ', ')}`
-- Conditional blocks
-  - `#{targets.failedIds.size() > 0 ? 'Some targets failed' : 'All good'}`
-- RCON summaries
-  - `Latest: #{outputs.rcon('myRcon').byId(targets.ids.get(0)).response ?: 'no output'}`
-  - `All: #{join(outputs.rcon('myRcon').responses, '; ')}`
-- Time formatting
-  - `Run started: #{formatDate(epoch, 'yyyy-MM-dd HH:mm:ss', 'Europe/Berlin')}`
+Function Catalog (with examples)
 
-Common mistakes (and fixes)
-- Using `()` on properties: use `targets.ids`, not `targets.ids()`.
-- Forgetting quotes in `rcon(name)`: use `'myRcon'` or "myRcon".
-- Missing null checks when indexing: ensure lists are non‑empty before accessing `[0]`, or use conditionals.
+Strings
+| Function | Returns | Example |
+| --- | --- | --- |
+| `upper(s)` | String | `{upper(automation.name)}` → `NIGHTLY RESTART` |
+| `lower(s)` | String | `{lower(teamName)}` |
+| `trim(s)` | String | `{trim('  hello  ')}` → `hello` |
+| `join(list, sep)` | String | `{join(targets.names, ', ')}` |
 
-Debugging & validation
-- Start small: print simple properties, then add functions.
-- Validate complex expressions in a test/staging run before production.
-- On any parse/evaluation error, the step fails with `automation.expression_error` and no side‑effects are sent.
+Time
+| Function | Returns | Example |
+| --- | --- | --- |
+| `formatDate(epochSeconds, pattern, zone)` | String | `{formatDate(epoch, 'yyyy-MM-dd HH:mm', 'UTC')}` |
 
-Performance notes
-- Keep expressions concise. Prefer `join(...)` to manual loops.
-- Avoid heavy computation in templates; precompute in the automation logic when possible.
+Math (double)
+| Function | Returns | Example |
+| --- | --- | --- |
+| `min(a,b)` | double | `{min(3.5, 2)}` → `2.0` |
+| `max(a,b)` | double | `{max(targets.count, 10)}` |
+| `sum(a,b)` | double | `{sum(1.5, 2.5)}` → `4.0` |
+| `avg(a,b)` | double | `{avg(2, 10)}` → `6.0` |
 
-Security
-- Expressions cannot access arbitrary classes or the filesystem; only the documented properties and functions are exposed.
+---
 
-How RCON capture ties in
-- In an RCON step, set `var` to a capture name. If a later template references `outputs.rcon('<var>')`, the executor may await responses (AUTO), or you can override with ALWAYS/NEVER.
-- Captured responses are exposed to AEL via `outputs.rcon(name)`.
-
-Migration from legacy placeholders
-- Old → New mapping:
-  - `targets.ids()` → `targets.ids`
-  - `targets.names()` → `targets.names`
-  - `targets.activeIds()` → `targets.activeIds` (and analogous for names/succeeded/failed)
-  - `outputs.rcon('x').responses()` → `outputs.rcon('x').responses`
-  - `nowIso()` → `nowIso`, `epoch()` → `epoch`
-
-End‑to‑end example (Discord notification)
+RCON Capture & Smart Awaiting
+1) In your RCON step, set `var` to a capture name (e.g., `cap`).
+2) In a later step, reference the capture to read responses:
 ```
-Title:  #{automation.name} — step #{step.indexHuman}
-Body:   Targets (#{targets.count}): #{join(targets.names, ', ')}
-        Failed: #{targets.failedIds.size()} — #{join(targets.failedNames, ', ')}
-        RCON:   #{join(outputs.rcon('check').responses, '; ')}
+All responses:\n{join(outputs.rcon('cap').responses, '\n---\n')}
 ```
+3) Awaiting modes
+- AUTO (default): the executor scans subsequent steps and awaits only when `{outputs.rcon('cap')...}` is referenced.
+- ALWAYS: force awaiting, even if no later template references it.
+- NEVER: never await (fire‑and‑forget).
+
+Timeouts
+- Optional `timeoutMs` lets you control how long to wait. If it expires, targets are marked FAILED with a timeout message. Late responses can still be persisted.
+
+---
+
+Recipes by Step Type
+
+Notify
+```
+Title:  {automation.name} — step {step.indexHuman}/{run.workflowSize}
+Message: Targets ({targets.count}): {join(targets.names, ', ')}\n
+Succeeded ({targets.succeededIds.size()}): {join(targets.succeededNames, ', ')}\n
+Failed ({targets.failedIds.size()}): {join(targets.failedNames, ', ')}
+```
+
+Discord Webhook (content)
+```
+Run {automation.name} on {date} at {timeHms} (UTC)\n
+Targets: {targets.count} — {join(targets.names, ', ')}
+```
+
+Discord Webhook (embed fields)
+```
+Title:       {automation.name} — Step {step.indexHuman}
+Description: Targets ({targets.count}): {join(targets.names, ', ')}
+Field name:  Succeeded
+Field value: {targets.succeededIds.size()} — {join(targets.succeededNames, ', ')}
+Field name:  Failed
+Field value: {targets.failedIds.size()} — {join(targets.failedNames, ', ')}
+```
+
+RCON summary (after capture `cap`)
+```
+{join(outputs.rcon('cap').responses, '\n---\n')}
+```
+
+Stop (conditional message)
+```
+{targets.count > 3 ? 'Rolling stop' : 'Quick stop'} on {targets.count} servers
+```
+
+Backup naming
+```
+{automation.name}-{date}-{timeHms}
+```
+
+Setting Sync (example string values)
+```
+WelcomeMessage = Hello {teamName}! Run {automation.name} on {date}.
+```
+
+More examples: see “AEL Examples” for copy‑paste recipes.
+
+---
+
+Troubleshooting Guide
+- Empty output? The value is null. Add a default: `{value ?: 'n/a'}`.
+- “Unknown property/function”? Check spelling and use properties (no `()` unless calling a listed function).
+- “Index out of bounds”? Ensure the list has items before `[0]`, or guard with a conditional.
+- “Did not await RCON”? Ensure you reference `{outputs.rcon('cap')...}` in a later step, or set `awaitMode=ALWAYS`.
+
+---
+
+Security & Performance
+- Expressions run in a restricted sandbox. Only the variables and functions above are available; no static methods or reflection.
+- Keep expressions short and focused. Use `join(...)` for lists. Avoid heavy projections or deeply nested expressions.
+
+---
+
+Migration
+- If you previously wrote `#{...}`, switch to `{...}`. Everything else stays the same.
+- Rename legacy property‑calls to properties: `targets.ids()` → `targets.ids`, `outputs.rcon('x').responses()` → `outputs.rcon('x').responses`, `nowIso()` → `nowIso`, `epoch()` → `epoch`.
+
+---
+
+Appendix: Operator & Collection Cheatsheet
+- Arithmetic: `1 + 2`, `5 % 2`
+- Boolean: `a and b`, `a or b`, `not a`
+- Compare: `a == b`, `a != b`, `a > b`, `a >= b`, `a < b`, `a <= b`
+- Conditional: `cond ? a : b`, `a ?: b`
+- Safe navigation: `obj?.prop`
+- Collections: `list.size()`, `list[i]`, `list.?[cond]`, `list.![expr]`
