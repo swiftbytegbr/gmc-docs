@@ -137,13 +137,7 @@ Syntax and Operators (with examples)
 | `targets.failed.size` | int | Count of failed/skipped targets |
 | `targets.nameById(id)` | String|null | Lookup display name by server ID |
 
-Legacy aliases (supported for compatibility)
-
-- `targets.count` (== `targets.all.size`)
-- `targets.ids`, `targets.names`
-- `targets.activeIds`, `targets.activeNames`
-- `targets.succeededIds`, `targets.succeededNames`
-- `targets.failedIds`, `targets.failedNames`
+ 
 
 ### Outputs (RCON)
 
@@ -269,11 +263,7 @@ Security & Performance
 
 ---
 
-Migration
-- If you previously wrote `#{...}`, switch to `{...}`. Everything else stays the same.
-- Rename legacy property‑calls to properties: `targets.ids()` → `targets.ids`, `outputs.rcon('x').responses()` → `outputs.rcon('x').responses`, `nowIso()` → `nowIso`, `epoch()` → `epoch`.
-
----
+ 
 
 Appendix: Operator & Collection Cheatsheet
 - Arithmetic: `1 + 2`, `5 % 2`
