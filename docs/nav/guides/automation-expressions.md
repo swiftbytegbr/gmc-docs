@@ -55,19 +55,44 @@ Concepts You’ll Use
 
 ---
 
-Syntax and Operators (with examples)
-- Literals: `'text'`, `"text"`, `42`, `3.14`, `true`, `false`, `null`.
-- Math: `{1 + 2}`, `{5 % 2}`
-- Compare: `{targets.all.size > 5}`
-- Boolean: `{targets.all.size > 0 and run.workflowSize >= 1}`
-- Conditional: `{targets.all.size > 0 ? 'has targets' : 'none'}`
-- Elvis default: `{backupName ?: 'unnamed'}`
-- Safe navigation: `{outputs?.rcon('cap')?.byId(targets.all.ids[0])?.response}`
-- Collections:
-  - Size: `{targets.all.names.size()}`
-  - Index: `{targets.all.names[0]}`
-  - Filter: `{join(targets.all.names.?[#this.startsWith('EU-')], ', ')}`
-  - Map: `{join(targets.all.names.![upper(#this)], ', ')}`
+Syntax Reference
+
+Literals
+- Strings: `'text'` or `"text"` (escape quotes inside the other), numbers: `42`, `3.14`, booleans: `true`/`false`, `null`.
+
+Arithmetic and Comparison
+- Arithmetic: `{1 + 2}`, `{5 % 2}`
+- Comparison: `{targets.all.size > 5}`, `{automation.name == 'Nightly Restart'}`
+
+Boolean Logic
+- `{targets.all.size > 0 and run.workflowSize >= 1}`
+- `{(teamName != null) or (targets.succeeded.size > 0)}`
+
+Conditionals
+- Ternary: `{targets.all.size > 0 ? 'has targets' : 'none'}`
+- Elvis (default when null/empty): `{backupName ?: 'unnamed'}`
+
+Safe Navigation
+- Use `?.` to avoid errors when something might be null:
+```
+{outputs?.rcon('cap')?.byId(targets.all.ids[0])?.response}
+```
+
+Collections
+- Size: `{targets.all.names.size()}`
+- Index: `{targets.all.names[0]}`
+- Filter (selection):
+```
+{join(targets.all.names.?[#this.startsWith('EU-')], ', ')}
+```
+- Map (projection):
+```
+{join(targets.all.names.![upper(#this)], ', ')}
+```
+
+Strings
+- Concatenate: `{'Hello ' + automation.name}`
+- Trim/Case/Join: `{trim('  hi  ')}`, `{upper(teamName)}`, `{join(targets.all.names, ', ')}`
 
 ---
 
@@ -245,7 +270,7 @@ Setting Sync (example string values)
 WelcomeMessage = Hello {teamName}! Run {automation.name} on {date}.
 ```
 
-More examples: see “AEL Examples” for copy‑paste recipes.
+ 
 
 ---
 
@@ -265,10 +290,14 @@ Security & Performance
 
  
 
-Appendix: Operator & Collection Cheatsheet
-- Arithmetic: `1 + 2`, `5 % 2`
-- Boolean: `a and b`, `a or b`, `not a`
-- Compare: `a == b`, `a != b`, `a > b`, `a >= b`, `a < b`, `a <= b`
-- Conditional: `cond ? a : b`, `a ?: b`
-- Safe navigation: `obj?.prop`
-- Collections: `list.size()`, `list[i]`, `list.?[cond]`, `list.![expr]`
+Appendix: Operators Cheatsheet
+
+| Category | Examples | Notes |
+| --- | --- | --- |
+| Arithmetic | `1 + 2`, `5 % 2` | Standard precedence |
+| Comparison | `a == b`, `a != b`, `a > b`, `a >= b`, `a < b`, `a <= b` | Works for numbers/strings |
+| Boolean | `a and b`, `a or b`, `not a` | Short‑circuiting |
+| Conditional | `cond ? x : y` | Branch based on boolean |
+| Elvis | `a ?: b` | Use `b` if `a` is null/empty |
+| Safe nav | `obj?.prop` | Yields null if `obj` is null |
+| Collections | `list.size()`, `list[i]`, `list.?[cond]`, `list.![expr]` | Select/filter/map |

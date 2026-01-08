@@ -22,7 +22,6 @@ RCON (Smart Await)
 Expression Language
 - See “Expression Language (AEL)” for full details.
 - Use in Notify/Discord templates to reference run/step/targets and captured outputs.
- - Also see: “AEL Cheatsheet” for a quick reference and “AEL Examples” for copy‑paste snippets.
 
 Best Practices
 - Keep steps small; prefer explicit waits over long timeouts.
