@@ -5,9 +5,9 @@ Content
 ```
 Run {automation.name} – step {step.indexHuman}/{run.workflowSize}
 
-Targets ({targets.count}): {join(targets.names, ', ')}
-Succeeded ({targets.succeededIds.size()}): {join(targets.succeededNames, ', ')}
-Failed ({targets.failedIds.size()}): {join(targets.failedNames, ', ')}
+Targets ({targets.all.size}): {join(targets.all.names, ', ')}
+Succeeded ({targets.succeeded.size}): {join(targets.succeeded.names, ', ')}
+Failed ({targets.failed.size}): {join(targets.failed.names, ', ')}
 ```
 
 Discord Webhook – RCON Output Digest
@@ -29,27 +29,27 @@ Started at {formatDate(epoch, 'yyyy-MM-dd HH:mm:ss', 'UTC')} (UTC)
 
 STOP – Conditional Message
 ```
-{targets.count > 3 ? 'Rolling stop' : 'Quick stop'} on {targets.count} servers
+{targets.all.size > 3 ? 'Rolling stop' : 'Quick stop'} on {targets.all.size} servers
 ```
 
 Condition – Status‑Aware Text
 ```
-Step {step.indexHuman} evaluated. Succeeded: {targets.succeededIds.size()}, Skipped/Failed: {targets.failedIds.size()}
+Step {step.indexHuman} evaluated. Succeeded: {targets.succeeded.size}, Skipped/Failed: {targets.failed.size}
 ```
 
 Only Active Targets
 ```
-Active: {join(targets.activeNames, ', ')}
+Active: {join(targets.active.names, ', ')}
 ```
 
 Filtered Lists
 ```
-EU: {join(targets.names.?[#this.startsWith('EU-')], ', ')}
+EU: {join(targets.all.names.?[#this.startsWith('EU-')], ', ')}
 ```
 
 Uppercase Projection
 ```
-{join(targets.succeededNames.![upper(#this)], ', ')}
+{join(targets.succeeded.names.![upper(#this)], ', ')}
 ```
 
 Defensive Defaults
@@ -59,18 +59,18 @@ Backup name: {backupName ?: 'unnamed'}
 
 Per‑Target RCON Access
 ```
-First response: {outputs.rcon('cap').byId(targets.ids[0]).response ?: 'no response'}
+First response: {outputs.rcon('cap').byId(targets.all.ids[0]).response ?: 'no response'}
 
 Bullet List of Targets
 ```
-- Total: {targets.count}
-- Names:\n{join(targets.names.![('- ' + #this)], '\n')}
+- Total: {targets.all.size}
+- Names:\n{join(targets.all.names.![('- ' + #this)], '\n')}
 ```
 
 Conditional Sections
 ```
-{targets.failedIds.size() > 0 ? 'Some targets failed:' : 'All targets succeeded.'}\n
-{targets.failedIds.size() > 0 ? join(targets.failedNames.![concat('• ', #this)], '\n') : ''}
+{targets.failed.size > 0 ? 'Some targets failed:' : 'All targets succeeded.'}\n
+{targets.failed.size > 0 ? join(targets.failed.names.![('• ' + #this)], '\n') : ''}
 ```
 
 Fallback Defaults
@@ -80,8 +80,8 @@ Backup: {backupName ?: (automation.name + '-' + date)}
 
 Filter by Prefix
 ```
-EU targets: {join(targets.names.?[#this.startsWith('EU-')], ', ')}
-NA targets: {join(targets.names.?[#this.startsWith('NA-')], ', ')}
+EU targets: {join(targets.all.names.?[#this.startsWith('EU-')], ', ')}
+NA targets: {join(targets.all.names.?[#this.startsWith('NA-')], ', ')}
 ```
 
 RCON Await Pattern

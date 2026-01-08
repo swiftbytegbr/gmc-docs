@@ -10,7 +10,7 @@ Who Should Read This
 - Developers integrating editors or doing validation/autocomplete.
 
 At A Glance
-- Write `{automation.name}`, `{targets.count}`, `{step.indexHuman}`, `{join(targets.names, ', ')}` directly in any “Template supported” field.
+- Write `{automation.name}`, `{targets.all.size}`, `{step.indexHuman}`, `{join(targets.all.names, ', ')}` directly in any “Template supported” field.
 - If a value is missing/null, it renders as empty. Provide fallbacks with `{value ?: 'n/a'}`.
 - Only the documented variables and functions here are available (no arbitrary class/method access).
 
@@ -23,12 +23,12 @@ Hello {automation.name}! We are on step {step.indexHuman}/{run.workflowSize}.
 ```
 2) List targets
 ```
-Targets ({targets.count}): {join(targets.names, ', ')}
+Targets ({targets.all.size}): {join(targets.all.names, ', ')}
 ```
 3) Show results
 ```
-OK: {targets.succeededIds.size()} — {join(targets.succeededNames, ', ')}
-KO: {targets.failedIds.size()} — {join(targets.failedNames, ', ')}
+OK: {targets.succeeded.size} — {join(targets.succeeded.names, ', ')}
+KO: {targets.failed.size} — {join(targets.failed.names, ', ')}
 ```
 
 Tip: Use a small manual run to preview your template safely before rolling it out broadly.
@@ -58,22 +58,23 @@ Concepts You’ll Use
 Syntax and Operators (with examples)
 - Literals: `'text'`, `"text"`, `42`, `3.14`, `true`, `false`, `null`.
 - Math: `{1 + 2}`, `{5 % 2}`
-- Compare: `{targets.count > 5}`
-- Boolean: `{targets.count > 0 and run.workflowSize >= 1}`
-- Conditional: `{targets.count > 0 ? 'has targets' : 'none'}`
+- Compare: `{targets.all.size > 5}`
+- Boolean: `{targets.all.size > 0 and run.workflowSize >= 1}`
+- Conditional: `{targets.all.size > 0 ? 'has targets' : 'none'}`
 - Elvis default: `{backupName ?: 'unnamed'}`
-- Safe navigation: `{outputs?.rcon('cap')?.byId(targets.ids[0])?.response}`
+- Safe navigation: `{outputs?.rcon('cap')?.byId(targets.all.ids[0])?.response}`
 - Collections:
-  - Size: `{targets.names.size()}`
-  - Index: `{targets.names[0]}`
-  - Filter: `{join(targets.names.?[#this.startsWith('EU-')], ', ')}`
-  - Map: `{join(targets.names.![upper(#this)], ', ')}`
+  - Size: `{targets.all.names.size()}`
+  - Index: `{targets.all.names[0]}`
+  - Filter: `{join(targets.all.names.?[#this.startsWith('EU-')], ', ')}`
+  - Map: `{join(targets.all.names.![upper(#this)], ', ')}`
 
 ---
 
-Complete Variable Catalog
+## Complete Variable Catalog
 
-Convenience values
+### Convenience values
+
 | Path | Type | Description |
 | --- | --- | --- |
 | `teamName` | String | Team display name |
@@ -82,7 +83,8 @@ Convenience values
 | `date` | String | UTC date `yyyy‑MM‑dd` |
 | `timeHms` | String | UTC time `HH:mm:ss` |
 
-Automation
+### Automation
+
 | Path | Type | Description |
 | --- | --- | --- |
 | `automation.id` | String | Automation ID |
@@ -93,7 +95,8 @@ Automation
 | `automation.createdAt` | Instant | Creation time |
 | `automation.updatedAt` | Instant | Last update time |
 
-Run
+### Run
+
 | Path | Type | Description |
 | --- | --- | --- |
 | `run.id` | String | Run ID |
@@ -105,7 +108,8 @@ Run
 | `run.finishedAt` | Instant | Finished (nullable) |
 | `run.workflowSize` | int | Number of steps |
 
-Step
+### Step
+
 | Path | Type | Description |
 | --- | --- | --- |
 | `step.index` | Integer | 0‑based index of current step |
@@ -114,21 +118,35 @@ Step
 | `step.startedAt` | Instant | Step start time (nullable) |
 | `step.finishedAt` | Instant | Step end time (nullable) |
 
-Targets
+### Targets (bucketed)
+
 | Path | Type | Description |
 | --- | --- | --- |
-| `targets.count` | int | Total targets in this run |
-| `targets.ids` | List<String> | All target IDs (stable order) |
-| `targets.names` | List<String> | Display names aligned to `ids` |
-| `targets.activeIds` | List<String> | Still active for current step |
-| `targets.activeNames` | List<String> | Names aligned to `activeIds` |
-| `targets.succeededIds` | List<String> | Marked SUCCEEDED for current step |
-| `targets.succeededNames` | List<String> | Names aligned to `succeededIds` |
-| `targets.failedIds` | List<String> | FAILED for this step or globally skipped |
-| `targets.failedNames` | List<String> | Names aligned to `failedIds` |
+| `targets.all.ids` | List<String> | All target IDs (stable order) |
+| `targets.all.names` | List<String> | Display names aligned to `ids` |
+| `targets.all.size` | int | Number of total targets |
+| `targets.all.count` | int | Alias for `size` |
+| `targets.active.ids` | List<String> | IDs still active for current step |
+| `targets.active.names` | List<String> | Names aligned to `active.ids` |
+| `targets.active.size` | int | Count of active targets |
+| `targets.succeeded.ids` | List<String> | IDs marked SUCCEEDED for current step |
+| `targets.succeeded.names` | List<String> | Names aligned to `succeeded.ids` |
+| `targets.succeeded.size` | int | Count of succeeded targets |
+| `targets.failed.ids` | List<String> | IDs FAILED for this step or globally skipped |
+| `targets.failed.names` | List<String> | Names aligned to `failed.ids` |
+| `targets.failed.size` | int | Count of failed/skipped targets |
 | `targets.nameById(id)` | String|null | Lookup display name by server ID |
 
-Outputs (RCON)
+Legacy aliases (supported for compatibility)
+
+- `targets.count` (== `targets.all.size`)
+- `targets.ids`, `targets.names`
+- `targets.activeIds`, `targets.activeNames`
+- `targets.succeededIds`, `targets.succeededNames`
+- `targets.failedIds`, `targets.failedNames`
+
+### Outputs (RCON)
+
 | Path | Type | Description |
 | --- | --- | --- |
 | `outputs.rcon(name)` | RconSet | Access captured responses by capture name |
@@ -146,23 +164,26 @@ Notes
 Function Catalog (with examples)
 
 Strings
+
 | Function | Returns | Example |
 | --- | --- | --- |
 | `upper(s)` | String | `{upper(automation.name)}` → `NIGHTLY RESTART` |
 | `lower(s)` | String | `{lower(teamName)}` |
 | `trim(s)` | String | `{trim('  hello  ')}` → `hello` |
-| `join(list, sep)` | String | `{join(targets.names, ', ')}` |
+| `join(list, sep)` | String | `{join(targets.all.names, ', ')}` |
 
 Time
+
 | Function | Returns | Example |
 | --- | --- | --- |
 | `formatDate(epochSeconds, pattern, zone)` | String | `{formatDate(epoch, 'yyyy-MM-dd HH:mm', 'UTC')}` |
 
 Math (double)
+
 | Function | Returns | Example |
 | --- | --- | --- |
 | `min(a,b)` | double | `{min(3.5, 2)}` → `2.0` |
-| `max(a,b)` | double | `{max(targets.count, 10)}` |
+| `max(a,b)` | double | `{max(targets.all.size, 10)}` |
 | `sum(a,b)` | double | `{sum(1.5, 2.5)}` → `4.0` |
 | `avg(a,b)` | double | `{avg(2, 10)}` → `6.0` |
 
@@ -189,25 +210,25 @@ Recipes by Step Type
 Notify
 ```
 Title:  {automation.name} — step {step.indexHuman}/{run.workflowSize}
-Message: Targets ({targets.count}): {join(targets.names, ', ')}\n
-Succeeded ({targets.succeededIds.size()}): {join(targets.succeededNames, ', ')}\n
-Failed ({targets.failedIds.size()}): {join(targets.failedNames, ', ')}
+Message: Targets ({targets.all.size}): {join(targets.all.names, ', ')}\n
+Succeeded ({targets.succeeded.size}): {join(targets.succeeded.names, ', ')}\n
+Failed ({targets.failed.size}): {join(targets.failed.names, ', ')}
 ```
 
 Discord Webhook (content)
 ```
 Run {automation.name} on {date} at {timeHms} (UTC)\n
-Targets: {targets.count} — {join(targets.names, ', ')}
+Targets: {targets.all.size} — {join(targets.all.names, ', ')}
 ```
 
 Discord Webhook (embed fields)
 ```
 Title:       {automation.name} — Step {step.indexHuman}
-Description: Targets ({targets.count}): {join(targets.names, ', ')}
+Description: Targets ({targets.all.size}): {join(targets.all.names, ', ')}
 Field name:  Succeeded
-Field value: {targets.succeededIds.size()} — {join(targets.succeededNames, ', ')}
+Field value: {targets.succeeded.size} — {join(targets.succeeded.names, ', ')}
 Field name:  Failed
-Field value: {targets.failedIds.size()} — {join(targets.failedNames, ', ')}
+Field value: {targets.failed.size} — {join(targets.failed.names, ', ')}
 ```
 
 RCON summary (after capture `cap`)
@@ -217,7 +238,7 @@ RCON summary (after capture `cap`)
 
 Stop (conditional message)
 ```
-{targets.count > 3 ? 'Rolling stop' : 'Quick stop'} on {targets.count} servers
+{targets.all.size > 3 ? 'Rolling stop' : 'Quick stop'} on {targets.all.size} servers
 ```
 
 Backup naming
